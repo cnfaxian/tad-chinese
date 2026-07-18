@@ -191,7 +191,7 @@ export const FilterEditorRow: React.FunctionComponent<FilterEditorRowProps> = ({
   const colSelect = (
     <div className="bp4-select filter-row-col-select">
       <select value={selectVal} onChange={(event) => handleColumnSelect(event)}>
-        <option value="">Column...</option>
+        <option value="">列...</option>
         {colOpts}
       </select>
     </div>
@@ -218,7 +218,7 @@ export const FilterEditorRow: React.FunctionComponent<FilterEditorRowProps> = ({
         disabled={opDisabled}
         onChange={(event) => handleOpSelect(event)}
       >
-        <option value="">Operator...</option>
+        <option value="">运算符...</option>
         {opChoices}
       </select>
     </div>
@@ -234,7 +234,7 @@ export const FilterEditorRow: React.FunctionComponent<FilterEditorRowProps> = ({
       valInput = (
         <NumericInput
           onValueChange={handleNumericValueChange}
-          placeholder="Value"
+            placeholder="值"
           disabled={valDisabled}
           defaultValue={defaultValue}
         />
@@ -305,7 +305,7 @@ export const FilterEditorRow: React.FunctionComponent<FilterEditorRowProps> = ({
           <input
             className="bp4-input filter-editor-value"
             type="text"
-            placeholder="Value"
+          placeholder="值"
             disabled={valDisabled}
             value={compVal}
             onChange={(e) => handleValueChange(e.target.value)}

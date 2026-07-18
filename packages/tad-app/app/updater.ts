@@ -11,16 +11,16 @@ let updater: MenuItem | null;
 autoUpdater.autoDownload = false;
 autoUpdater.on("error", (event, error) => {
   dialog.showErrorBox(
-    "Error: ",
-    error == null ? "unknown" : (error.stack || error).toString()
+    "错误：",
+    error == null ? "未知错误" : (error.stack || error).toString()
   );
 });
 autoUpdater.on("update-available", () => {
   const buttonIndex = dialog.showMessageBoxSync({
     type: "info",
-    title: "Found Updates",
-    message: "A new release of Tad is available. Do you want to update now?",
-    buttons: ["Yes", "No"],
+    title: "发现更新",
+    message: "Tad 有新版本可用，是否立即更新？",
+    buttons: ["是", "否"],
   });
   if (buttonIndex === 0) {
     autoUpdater.downloadUpdate();
@@ -31,16 +31,16 @@ autoUpdater.on("update-available", () => {
 });
 autoUpdater.on("update-not-available", () => {
   dialog.showMessageBox({
-    title: "No Updates",
-    message: "Current version is up-to-date.",
+    title: "无更新",
+    message: "当前版本已是最新。",
   });
   updater!.enabled = true;
   updater = null;
 });
 autoUpdater.on("update-downloaded", () => {
   dialog.showMessageBoxSync({
-    title: "Install Updates",
-    message: "Update downloaded, will  update...",
+    title: "安装更新",
+    message: "更新已下载，即将更新...",
   });
   autoUpdater.quitAndInstall();
 });

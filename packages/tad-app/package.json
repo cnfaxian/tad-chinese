@@ -116,37 +116,37 @@
     "fileAssociations": [
       {
         "ext": "csv",
-        "name": "Comma Separated Values",
+        "name": "逗号分隔值",
         "role": "Viewer"
       },
       {
         "ext": "tsv",
-        "name": "Tab Separated Values",
+        "name": "制表符分隔值",
         "role": "Viewer"
       },
       {
         "ext": "tad",
-        "name": "Tad Saved Workspace",
+        "name": "Tad 保存的工作区",
         "role": "Editor"
       },
       {
         "ext": "parquet",
-        "name": "Parquet files",
+        "name": "Parquet 文件",
         "role": "Viewer"
       },
       {
         "ext": "sqlite",
-        "name": "Sqlite files",
+        "name": "SQLite 文件",
         "role": "Viewer"
       },
       {
         "ext": "duckdb",
-        "name": "DuckDb files",
+        "name": "DuckDb 文件",
         "role": "Viewer"
       },
       {
         "ext": "csv.gz",
-        "name": "Compressed CSV files",
+        "name": "压缩 CSV 文件",
         "role": "Viewer"
       }
     ],

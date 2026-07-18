@@ -76,11 +76,11 @@ export const AggPanel: React.FC<AggPanelProps> = ({
   const columnIds = schema.sortedColumns();
   return (
     <div className="ui-block">
-      <h6 className="bp4-heading">Aggregation Functions</h6>
+      <h6 className="bp4-heading">聚合函数</h6>
       <ColumnList
         schema={schema}
         columnListType={ColumnListTypes.AGG}
-        headerLabels={["Agg Fn"]}
+        headerLabels={["聚合函数"]}
         items={columnIds}
         rowFormatter={aggRowFormatter(viewParams, stateRef)}
         stateRef={stateRef}

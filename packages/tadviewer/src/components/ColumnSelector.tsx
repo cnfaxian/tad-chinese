@@ -49,7 +49,7 @@ export const ColumnSelector: React.FC<ColumnSelectorProps> = ({
           <input
             className="colSel-check"
             type="checkbox"
-            title="Show this column"
+            title="显示此列"
             onChange={() => actions.toggleShown(cid, stateRef)}
             checked={isShown}
           />
@@ -58,7 +58,7 @@ export const ColumnSelector: React.FC<ColumnSelectorProps> = ({
           <input
             className="colSel-check"
             type="checkbox"
-            title="Pivot by column"
+            title="按列透视"
             onChange={() => actions.togglePivot(cid, stateRef)}
             checked={isPivot}
           />
@@ -67,7 +67,7 @@ export const ColumnSelector: React.FC<ColumnSelectorProps> = ({
           <input
             className="colSel-check"
             type="checkbox"
-            title="Sort by column"
+            title="按列排序"
             onChange={() => actions.toggleSort(cid, stateRef)}
             checked={isSort}
           />
@@ -82,13 +82,13 @@ export const ColumnSelector: React.FC<ColumnSelectorProps> = ({
     const someShown = viewParams.displayColumns.length > 0;
     return (
       <tr className="all-row">
-        <td className="col-colName-all">All Columns</td>
+        <td className="col-colName-all">所有列</td>
         <td className="col-colType" />
         <td className="col-check">
           <IndeterminateCheckbox
             className="colSel-check"
             type="checkbox"
-            title="Show all columns"
+            title="显示所有列"
             /* ref={"showCheckbox-all"} */
             onChange={() => actions.toggleAllShown(stateRef)}
             checked={allShown}
@@ -113,11 +113,11 @@ export const ColumnSelector: React.FC<ColumnSelectorProps> = ({
         <table className="table table-condensed bp4-interactive column-selector-table">
           <thead>
             <tr>
-              <th className="column-selector-th col-colName">Column</th>
+              <th className="column-selector-th col-colName">列</th>
               <th className="column-selector-th col-colType" />
-              <th className="column-selector-th col-check">Show</th>
-              <th className="column-selector-th col-check">Pivot</th>
-              <th className="column-selector-th col-check">Sort</th>
+              <th className="column-selector-th col-check">显示</th>
+              <th className="column-selector-th col-check">透视</th>
+              <th className="column-selector-th col-check">排序</th>
             </tr>
           </thead>
           <tbody>{allRow}</tbody>

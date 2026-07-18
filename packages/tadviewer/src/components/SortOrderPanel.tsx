@@ -24,8 +24,8 @@ const dirSelect = (
   return (
     <div className="bp4-select bp4-minimal">
       <select value={selectVal} onChange={handleChange}>
-        <option value="asc">asc</option>
-        <option value="desc">desc</option>
+        <option value="asc">升序</option>
+        <option value="desc">降序</option>
       </select>
     </div>
   );
@@ -59,12 +59,12 @@ export const SortOrderPanel: React.FC<SortOrderPanelProps> = ({
   return (
     <div className="ui-block">
       <h6 className="bp4-heading">
-        Sort Columns <span className="bp4-ui-text">(drag to reorder)</span>
+        排序列 <span className="bp4-ui-text">（拖动重新排序）</span>
       </h6>
       <ColumnList
         schema={schema}
         columnListType={ColumnListTypes.SORT}
-        headerLabels={["Sort Dir"]}
+        headerLabels={["排序方向"]}
         items={viewParams.sortKey}
         rowFormatter={sortKeyRowFormatter(viewParams, stateRef)}
         stateRef={stateRef}

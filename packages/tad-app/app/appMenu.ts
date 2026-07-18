@@ -17,14 +17,14 @@ const separatorMenuItem: MenuItemConstructorOptions = {
 
 const aboutTadMenuItem = () => {
   return {
-    label: "About Tad",
+    label: "关于 Tad",
     role: "about",
   };
 };
 
 const checkForUpdateMenuItem = () => {
   return {
-    label: "Check for Updates",
+    label: "检查更新",
     click: updater.checkForUpdates,
   };
 };
@@ -32,7 +32,7 @@ const checkForUpdateMenuItem = () => {
 export const createMenu = () => {
   const fileSubmenu: MenuItemConstructorOptions[] = [
     {
-      label: "New Tad Window",
+      label: "新建 Tad 窗口",
       accelerator: "CmdOrCtrl+N",
       click: (item: MenuItem, focusedWindow: BrowserWindow | undefined) => {
         appWindow.newWindow(focusedWindow);
@@ -40,14 +40,14 @@ export const createMenu = () => {
     },
 
     {
-      label: "Open File...",
+      label: "打开文件...",
       accelerator: "CmdOrCtrl+O",
       click: (item: MenuItem, focusedWindow: BrowserWindow | undefined) => {
         appWindow.openDialog("openFile", focusedWindow);
       },
     },
     {
-      label: "Open Directory...",
+      label: "打开目录...",
       accelerator: "CmdOrCtrl+O",
       click: (item: MenuItem, focusedWindow: BrowserWindow | undefined) => {
         appWindow.openDialog("openDirectory", focusedWindow);
@@ -56,7 +56,7 @@ export const createMenu = () => {
 
     separatorMenuItem,
     {
-      label: "Save As...",
+      label: "另存为...",
       accelerator: "Shift+CmdOrCtrl+S",
       click: (
         item: MenuItem,
@@ -67,7 +67,7 @@ export const createMenu = () => {
       },
     },
     {
-      label: "Export...",
+      label: "导出...",
       click: (
         item: MenuItem,
         focusedWindow: BrowserWindow | undefined,
@@ -103,21 +103,21 @@ export const createMenu = () => {
   }
 
   const editSubmenu: MenuItemConstructorOptions[] = [
-    { label: "Cut", accelerator: "CmdOrCtrl+X", role: "cut" },
-    { label: "Copy", accelerator: "CmdOrCtrl+C", role: "copy" },
-    { label: "Paste", accelerator: "CmdOrCtrl+V", role: "paste" },
+    { label: "剪切", accelerator: "CmdOrCtrl+X", role: "cut" },
+    { label: "复制", accelerator: "CmdOrCtrl+C", role: "copy" },
+    { label: "粘贴", accelerator: "CmdOrCtrl+V", role: "paste" },
   ];
   const viewSubmenu: MenuItemConstructorOptions[] = [
-    { label: "Zoom Reset", accelerator: "CmdOrCtrl+0", role: "resetZoom" },
-    { label: "Zoom In", accelerator: "CmdOrCtrl+Plus", role: "zoomIn" },
-    { label: "Zoom Out", accelerator: "CmdOrCtrl+-", role: "zoomOut" },
+    { label: "重置缩放", accelerator: "CmdOrCtrl+0", role: "resetZoom" },
+    { label: "放大", accelerator: "CmdOrCtrl+Plus", role: "zoomIn" },
+    { label: "缩小", accelerator: "CmdOrCtrl+-", role: "zoomOut" },
   ];
   const debugSubmenu: MenuItemConstructorOptions[] = [
     {
       role: "toggleDevTools",
     },
     {
-      label: "Show Hidden Columns",
+      label: "显示隐藏列",
       type: "checkbox",
       click: (
         item: MenuItem,
@@ -131,7 +131,7 @@ export const createMenu = () => {
   ];
   let helpSubmenu: MenuItemConstructorOptions[] = [
     {
-      label: "Quick Start Guide",
+      label: "快速入门指南",
       click: (
         item: MenuItem,
         focusedWindow: BrowserWindow | undefined,
@@ -141,7 +141,7 @@ export const createMenu = () => {
       },
     },
     {
-      label: "Send Feedback / Bug Reports",
+      label: "发送反馈 / 报告问题",
       click: (
         item: MenuItem,
         focusedWindow: BrowserWindow | undefined,
@@ -153,28 +153,28 @@ export const createMenu = () => {
   ];
   const template: MenuItemConstructorOptions[] = [
     {
-      label: "File",
+      label: "文件",
       submenu: fileSubmenu,
     },
     {
-      label: "Edit",
+      label: "编辑",
       submenu: editSubmenu,
     },
     {
-      label: "View",
+      label: "视图",
       submenu: viewSubmenu,
     },
   ];
 
   if (process.env.NODE_ENV === "development") {
     template.push({
-      label: "Debug",
+      label: "调试",
       submenu: debugSubmenu as any,
     });
   }
 
   template.push({
-    label: "Help",
+    label: "帮助",
     submenu: helpSubmenu,
   });
 

@@ -13,12 +13,12 @@ export const DelayedCalcFooter: React.FunctionComponent<
 > = ({ dirty, onCancel, onApply, onDone }) => {
   return (
     <div className="delayed-calc-footer">
-      <Button text="Cancel" onClick={(e: any) => onCancel()} />
-      <Button disabled={!dirty} text="Apply" onClick={(e: any) => onApply()} />
+      <Button text="取消" onClick={(e: any) => onCancel()} />
+      <Button disabled={!dirty} text="应用" onClick={(e: any) => onApply()} />
       <Button
         className="bp4-intent-primary"
         onClick={(e: any) => onDone()}
-        text="Done"
+        text="完成"
       />
     </div>
   );

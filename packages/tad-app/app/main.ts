@@ -160,51 +160,51 @@ const optionDefinitions = [
     multiple: true,
     defaultOption: true,
     typeLabel:
-      "{underline file}.csv or {underline file}.tad or sqlite://{underline file}/{underline table}",
+      "{underline file}.csv 或 {underline file}.tad 或 sqlite://{underline file}/{underline table}",
     description:
-      "CSV file(.csv with header row), Tad(.tad) file, Parquet file or sqlite file to view",
+      "要查看的 CSV 文件（.csv，含标题行）、Tad（.tad）文件、Parquet 文件或 SQLite 文件",
   },
   {
     name: "executed-from",
     type: String,
-    description: "pathname to working directory",
+    description: "工作目录路径",
   },
   {
     name: "foreground",
     alias: "f",
     type: Boolean,
-    description: "keep in foreground",
+    description: "保持在前台运行",
   },
   {
     name: "help",
     alias: "h",
     type: Boolean,
-    description: "Show usage information",
+    description: "显示使用信息",
   },
   {
     name: "hidden-cols",
     type: Boolean,
-    description: "Show hidden columns (for debugging)",
+    description: "显示隐藏列（用于调试）",
   },
   {
     name: "show-queries",
     type: Boolean,
-    description: "Show generated SQL queries on console when in foreground",
+    description: "前台运行时在控制台显示生成的 SQL 查询",
   },
   {
     name: "version",
     alias: "v",
     type: Boolean,
-    description: "Print version number and exit",
+    description: "打印版本号并退出",
   },
 ];
 const usageInfo = [
   {
     header: "Tad",
-    content: "A viewer for tabular data.",
+    content: "表格数据查看器。",
   },
   {
-    header: "Synopsis",
+    header: "概要",
     content: [
       "$ tad [{italic options}] {underline file}.csv",
       "$ tad [{italic options}] {underline file}.csv.gz",
@@ -216,7 +216,7 @@ const usageInfo = [
     ],
   },
   {
-    header: "Options",
+    header: "选项",
     optionList: optionDefinitions.filter((opt) => opt.name !== "srcfile"),
   },
 ];
@@ -232,7 +232,7 @@ const showUsage = () => {
 };
 
 const reportFatalError = (msg: string) => {
-  dialog.showErrorBox("Error starting Tad", msg);
+  dialog.showErrorBox("启动 Tad 出错", msg);
   app.quit();
 };
 
@@ -351,7 +351,7 @@ const initApp =
         options = commandLineArgs(optionDefinitions, argOptions);
       } catch (e) {
         const argErr = e as any;
-        console.error("Error parsing command line arguments: ", argErr.message);
+        console.error("命令行参数解析错误：", argErr.message);
         options = { help: true };
       }
       let quickExit = false;

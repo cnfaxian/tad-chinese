@@ -220,7 +220,7 @@ export const openDialog = async (
      */
     filters: [
       {
-        name: "data files",
+        name: "数据文件",
         extensions: dataFileExtensions.concat(["tad", "sqlite", "duckdb"]),
       },
       /*
@@ -325,10 +325,10 @@ export const saveAsDialog = async () => {
   }
   const fileContents = await getAppState(win);
   const saveFilename = dialog.showSaveDialogSync(win, {
-    title: "Save Tad Workspace",
+    title: "保存 Tad 工作区",
     filters: [
       {
-        name: "Tad Workspace files",
+        name: "Tad 工作区文件",
         extensions: ["tad"],
       },
     ],
@@ -342,7 +342,7 @@ export const saveAsDialog = async () => {
   const saveStr = serialize(fileContents);
   fs.writeFile(saveFilename, saveStr, (err) => {
     if (err) {
-      dialog.showErrorBox("Error saving file: ", err.toString());
+      dialog.showErrorBox("保存文件出错：", err.toString());
     }
 
     log.info("succesfully saved workspace to ", saveFilename);
@@ -365,7 +365,7 @@ const browseExportPath = async (
   };
 
   const exportPath = dialog.showSaveDialogSync(win, {
-    title: "Export Filtered Data",
+    title: "导出筛选数据",
     filters: [fmtFilter],
   });
   win.webContents.send("set-export-path", { exportPath });

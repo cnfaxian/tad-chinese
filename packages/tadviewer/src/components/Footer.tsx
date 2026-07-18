@@ -95,16 +95,16 @@ export const Footer: React.FunctionComponent<FooterProps> = (
       if (filterRowCount !== baseRowCount && filterRowCount !== rowCount) {
         const filterCountStr = numFmt(filterRowCount);
         rcParts.push(filterCountStr);
-        rcParts.push(" Filtered, ");
+        rcParts.push(" 已筛选, ");
       }
       rcParts.push(numFmt(baseRowCount));
-      rcParts.push(" Total)");
+      rcParts.push(" 总计)");
     }
     const rcStr = rcParts.join("");
     rowCountBlock = (
       <div className="footer-block">
         <span className="footer-value">
-          {rcStr} Row{rowCount === 1 ? "" : "s"}
+          {rcStr} 行
         </span>
       </div>
     );
@@ -114,7 +114,7 @@ export const Footer: React.FunctionComponent<FooterProps> = (
       <div className="footer-top-row">
         <div className="footer-filter-block">
           <a onClick={(event) => handleFilterButtonClicked(event)} tabIndex={0}>
-            Filter
+            筛选
           </a>
           <span className="filter-summary"> {filterStr}</span>
         </div>

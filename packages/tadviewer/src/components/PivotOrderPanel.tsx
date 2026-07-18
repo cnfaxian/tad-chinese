@@ -19,7 +19,7 @@ export const PivotOrderPanel: React.FC<PivotOrderPanelProps> = ({
 }) => (
   <div className="ui-block">
     <h6 className="bp4-heading">
-      Pivot Columns <span className="bp4-ui-text">(drag to reorder)</span>
+      透视列 <span className="bp4-ui-text">（拖动重新排序）</span>
     </h6>
     <ColumnList
       schema={schema}

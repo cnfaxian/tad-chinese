@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Tad Quick Start</title>
+    <title>Tad 快速入门</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -17,169 +16,142 @@
   <body>
     <main>
       <div class="container">
-        <h1>Quick Start</h1>
-        <p class="lead">Welcome to Tad!</p>
-        <p>If you are reading this message, you have successfully installed the Tad desktop app!<p>
-        <h3>What Tad Is</h3>
-        The Tad desktop app lets you quickly explore tabular data files in several common file formats, including:
+        <h1>快速入门</h1>
+        <p class="lead">欢迎使用 Tad！</p>
+        <p>如果您看到此消息，说明您已成功安装 Tad 桌面应用！<p>
+        <h3>Tad 是什么</h3>
+        Tad 桌面应用可以让您快速浏览多种常见格式的表格数据文件，包括：
         <br><br>
         <dl class="row">
         <dt class="col-sm-2"><code>.csv</code></dt>
-        <dd class="col-sm-10">The ubiquitous <a href="https://en.wikipedia.org/wiki/Comma-separated_values" onclick='tadOpenExternal(event,"https://en.wikipedia.org/wiki/Comma-separated_values")'>Comma Separated Values</a> file format</li></dd>
+        <dd class="col-sm-10">通用的<a href="https://en.wikipedia.org/wiki/Comma-separated_values" onclick='tadOpenExternal(event,"https://en.wikipedia.org/wiki/Comma-separated_values")'>逗号分隔值</a>文件格式</dd>
         <dt class="col-sm-2"><code>.parquet</code></dt>
-        <dd class="col-sm-10"><a href="https://parquet.apache.org/" onclick='tadOpenExternal(event,"https://parquet.apache.org/")'>Apache Parquet</a>, an efficient binary columnar storage format for tabular data, especially useful for large datasets</dd>
+        <dd class="col-sm-10"><a href="https://parquet.apache.org/" onclick='tadOpenExternal(event,"https://parquet.apache.org/")'>Apache Parquet</a>，一种高效的二进制列式存储格式，特别适合大型数据集</dd>
         <dt class="col-sm-2"><code>.duckdb</code></dt>
-        <dd class="col-sm-10"><a href="https://duckdb.org/" onclick='tadOpenExternal(event,"https://duckdb.org/")'>DuckDb</a> database files</dd>
+        <dd class="col-sm-10"><a href="https://duckdb.org/" onclick='tadOpenExternal(event,"https://duckdb.org/")'>DuckDb</a> 数据库文件</dd>
         <dt class="col-sm-2"><code>.sqlite</code></dt>
-        <dd class="col-sm-10"><a href="https://www.sqlite.org/index.html" onclick='tadOpenExternal(event,"https://www.sqlite.org/index.html")''>SQLite</a> database files</dd>
+        <dd class="col-sm-10"><a href="https://www.sqlite.org/index.html" onclick='tadOpenExternal(event,"https://www.sqlite.org/index.html")'>SQLite</a> 数据库文件</dd>
         </dl>
 
         <P>
-          The primary feature that Tad provides for exploring and analyzing files is a <a href="https://en.wikipedia.org/wiki/Pivot_table"
-          onclick='tadOpenExternal(event,"https://en.wikipedia.org/wiki/Pivot_table")'>pivot table</a>.
-          A Tad pivot table transforms a flat table of data into a hierarchical <i>tree table</i> by
-          grouping together rows that have the same value for some selected columns (the pivot columns),
-          and calculating aggregate values (like sum, min or max) for the other columns in each group.
-          Tad also supports multi-column sorts and compound filters on column values.
+          Tad 提供的核心功能是<a href="https://en.wikipedia.org/wiki/Pivot_table"
+          onclick='tadOpenExternal(event,"https://en.wikipedia.org/wiki/Pivot_table")'>数据透视表</a>。
+          数据透视表将扁平的数据表转换为层次化的<i>树形表</i>，
+          通过将具有相同选定列值的行分组，并为每组的其他列计算聚合值（如求和、最小值或最大值）。
+          Tad 还支持多列排序和复合条件筛选。
         </P>
-        <h3>Launching Tad</h3>
-        <p>There are three ways to launch Tad:
+        <h3>启动 Tad</h3>
+        <p>有三种方式启动 Tad：
         <ol>
-          <li>Application Icon
-          <p>You can double click on the Tad application icon to open Tad.  Use <strong>File...Open</strong> and the standard file open dialog to open a tabular data file in any
-          of the supported file formats.
-          <li>Context Menu or Drag and Drop</li>
-          <p>The installation process registers Tad as a viewer for the supported file format extensions. On any <code>.csv</code> or <code>.parquet</code>file in the Finder (macOS) or Explorer (Windows), use <strong>Open With...</strong> and select <strong>Tad</strong> to open the file in Tad.
-          <li>From the Command Line
+          <li>应用程序图标
+          <p>您可以双击 Tad 应用程序图标来打开 Tad。使用<strong>文件...打开</strong>和标准文件打开对话框来打开任何支持格式的表格数据文件。
+          <li>右键菜单或拖放</li>
+          <p>安装过程会将 Tad 注册为支持文件格式的查看器。在 Finder（macOS）或资源管理器（Windows）中右键点击任何 <code>.csv</code> 或 <code>.parquet</code> 文件，选择<strong>打开方式...</strong>并选择 <strong>Tad</strong> 来打开文件。
+          <li>从命令行
           <div id="cmdLineSetup">
           </div>
           <P>
-          Once Tad is installed and available on your PATH, simply type:
+          安装 Tad 并将其添加到 PATH 后，只需输入：
 <pre>
 $ tad somefile.csv
 </pre>
-          to launch Tad to explore the file. You can also open <code>.tad</code> files (previously saved Tad view configurations) and all the
-          other supported file types via the command line.
+          即可启动 Tad 来浏览文件。您也可以通过命令行打开 <code>.tad</code> 文件（之前保存的 Tad 视图配置）以及所有其他支持的文件类型。
         </ol>
-        <h3>Basic Usage</h3>
+        <h3>基本用法</h3>
         <p>
-        You can explore the basics of Tad by opening this example CSV file (from the <a href="https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset"
-          onclick='tadOpenExternal(event,"https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset")'>IMDB 5000 Movie Dataset</a> on Kaggle)
-        included in the Tad distribution:
+        您可以通过打开此示例 CSV 文件（来自 Kaggle 上的 <a href="https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset"
+          onclick='tadOpenExternal(event,"https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset")'>IMDB 5000 Movie Dataset</a>）
+        来了解 Tad 的基本功能：
         <p>
         <button class="btn btn-primary btn-lg"
           onclick='tadOpenExample()'>
-        Open movie_metadata.csv
+        打开 movie_metadata.csv
         </button>
         <p>
-        When you open a file in Tad, Tad automatically imports the data into an internal in-memory DuckDb database and
-        displays the tabular data in a grid. 
-        You can see the Tad pivot table controls by clicking the pivot icon
-        on the left of the Tad window:
+        在 Tad 中打开文件时，Tad 会自动将数据导入到内部的内存 DuckDb 数据库中，
+        并在网格中显示表格数据。
+        您可以点击 Tad 窗口左侧的透视图标来查看数据透视表控件：
         <P>
         <img src="images/tad-quickstart-1.png"></img>
         <P>
-        This will open the sidebar:
+        这将打开侧边栏：
         <P>
         <img src="images/tad-quickstart-2.png"></img>
-<!--        <P>
-        The primary feature that Tad provides for exploring and analyzing files is a <emph>pivot table</emph>.
-        Briefly, a pivot table is a transformation of a table into a hiearchical <emph>tree table</emph> by grouping all rows in the source table that have the same value for some columns (the pivot columns).
-        Multiple pivot columns result in a nested hierarchical structure, with each level of the hierarchy corresponding to one pivot column. Values of cells for non-pivoted columns at higher levels of the pivot table are determined by applying an <emph>aggregate function</emph> to all leaf rows underneath that row.
--->
         <P>
-        The name and type of each column are shown in the main <strong>Column Selector</strong> above.
-        The additional controls in the column selector enable you to quickly build a pivot table
-        to explore your data set:
+        上方的主<strong>列选择器</strong>中显示了每列的名称和类型。
+        列选择器中的附加控件使您可以快速构建数据透视表来浏览数据集：
         <ul>
-          <li>Use the checkboxes under <strong>Pivot</strong> in the main column selector to choose columns for the pivot hierarchy.
-          <li>Use the checkboxes under <strong>Show</strong> in the main column selector to determine what columns are shown / hidden.
-          <li>Set the sort columns using either the checkboxes under <strong>Sort</strong> the main column selector or by clicking on column headers in the main grid.
+          <li>使用主列选择器中<strong>透视</strong>下的复选框来选择透视层次的列。
+          <li>使用主列选择器中<strong>显示</strong>下的复选框来确定显示/隐藏哪些列。
+          <li>使用主列选择器中<strong>排序</strong>下的复选框或点击主网格中的列标题来设置排序列。
           </ul>
-        Additional controls for setting the order of columns, pivots and the sort key, and controlling aggregation and formatting rules are available under <strong>Additional Properties</strong> at the bottom of the side bar.
-        <h4>Filtering</h4>
+        侧边栏底部的<strong>附加属性</strong>中提供了设置列顺序、透视和排序键，以及控制聚合和格式化规则的附加控件。
+        <h4>筛选</h4>
         <P>
-        Tad provides facilities for constructing a <emph>filter</emph> to select a subset of data. A filter consists of a collection of predicates that compare a value in that row (identified by column name) with a constant.
+        Tad 提供了构建<strong>筛选条件</strong>来选择数据子集的功能。筛选条件由一组谓词组成，每个谓词将该行中的值（通过列名标识）与常量进行比较。
         <P>
-        Activate the filter pane by clicking the <strong>Filter</strong> link at the bottom of the window:
+        点击窗口底部的<strong>筛选</strong>链接来激活筛选面板：
         <P>
         <img src="images/tad-quickstart-filter-1.png"></img>
         <P>
-        When opened, a (populated) filter dialog looks like this:
+        打开后，填充的筛选对话框如下所示：
         <P>
         <img src="images/tad-quickstart-filter-2.png"></img>
         <P>
-        Construct the filter by selecting the logical operator (AND or OR) <strong>(1)</strong> and editing individual predicate rows <strong>(2)</strong>.
-        Add more rows by pressing the <strong>+</strong> button <strong>(3)</strong>, and delete predicates by clicking the <strong>x</strong> button <strong>(4)</strong> next to that predicate.
+        通过选择逻辑运算符（AND 或 OR）<strong>(1)</strong> 并编辑各个谓词行 <strong>(2)</strong> 来构建筛选条件。
+        按 <strong>+</strong> 按钮 <strong>(3)</strong> 添加更多行，点击谓词旁的 <strong>x</strong> 按钮 <strong>(4)</strong> 删除谓词。
         <P>
-        Discard, test or commit your changes using the three buttons in the lower right of the pane:
+        使用面板右下角的三个按钮来放弃、测试或提交更改：
         <P>
         <img src="images/tad-quickstart-filter-3.png"></img>
         <P>
-        <h4>Combining Operations</h4>
-        The different operations in Tad can be combined to enable you to explore the underlying data set.
-        For example, here is a breakdown of top grossing movies by country and director:
+        <h4>组合操作</h4>
+        Tad 中的不同操作可以组合使用，帮助您浏览底层数据集。
+        例如，以下是按国家和导演分类的票房最高电影：
         <P>
         <img src="images/tad-quickstart-3.png"></img>
         <P>
-        This view was produced with the following actions, which you can try for yourself: 
+        此视图是通过以下操作生成的，您可以自行尝试：
         <ul>
-        <li><b>Pivot</b> by <code>country</code> and <code>director</code> by clicking the checkboxes under <b>Pivot</b> (in
-          that order).  ()
-        <li>On the <b>Pivot Tree Leaf Level</b> drop-down (at the bottom of the column selector), select <code>movie title</code>
-        <li><b>Sort</b> by <code>gross</code>. Under <b>Additional Properties</b> > <b>Sort</b>, select <i>desc</i> for descending order for this column.
-        <li>Using the <b>Fiter</b> link under the grid, set the filter to <code>gross</code> <i>is not null</i></li>
-        <li>Under <b>Additional Properties</b> > <b>Order</b>, drag <code>gross</code> to the top of the list so it will be the
-        first column displayed after the pivot tree.
+        <li>按 <code>country</code> 和 <code>director</code> 进行<strong>透视</strong>，点击<strong>透视</strong>下的复选框（按此顺序）。
+        <li>在<strong>透视树叶子级别</strong>下拉菜单（列选择器底部）中，选择 <code>movie title</code>
+        <li>按 <code>gross</code> <strong>排序</strong>。在<strong>附加属性</strong> > <strong>排序</strong>中，选择<i>降序</i>。
+        <li>使用网格下方的<strong>筛选</strong>链接，设置筛选条件为 <code>gross</code> <i>不为空</i></li>
+        <li>在<strong>附加属性</strong> > <strong>排列</strong>中，将 <code>gross</code> 拖到列表顶部，使其成为透视树后显示的第一列。
         </ul>
-        Other useful features:
+        其他有用的功能：
         <ul>
-        <li>If you want to change the order of the pivots, use <b>Additional Properties</b> > <b>Pivot</b> 
-          and drag column names in the list of pivoted columns to adjust the order.
+        <li>如果要更改透视的顺序，请使用<strong>附加属性</strong> > <strong>透视</strong>，
+          在透视列列表中拖动列名来调整顺序。
         </li>
         <li>
-          <b>Additional Properties</b> > <b>Aggregations</b> can be used to set the aggregation function (<code>sum</code>, <code>avg</code>, <code>min</code>, <code>max</code>, etc.)
-          of each column, used to calculate values for non-leaf cells at higher levels of the pivot tree. The default aggregation is chosen based on the column type (<code>uniq</code> for string columns, <code>sum</code> for numerics).
-          You can also disable aggregations for a column by selecting <code>null</code> as the aggregation function. 
+          <strong>附加属性</strong> > <strong>聚合</strong>可用于设置每列的聚合函数（<code>sum</code>、<code>avg</code>、<code>min</code>、<code>max</code> 等），
+          用于计算透视树高层非叶单元格的值。默认聚合基于列类型选择（字符串列为 <code>uniq</code>，数值列为 <code>sum</code>）。
+          您也可以通过选择 <code>null</code> 作为聚合函数来禁用某列的聚合。
         </li>
-        <li><b>Additional Properties</b> > <b>Format</b> can be used to set formatting properties (number of decimal places, etc) of each column.  You can set defaults for each column type, 
-          or fomatting properties of a specific column.</li>
+        <li><strong>附加属性</strong> > <strong>格式</strong>可用于设置每列的格式属性（小数位数等）。您可以设置每种列类型的默认格式，
+          或设置特定列的格式属性。</li>
         </ul>
-        <h4>Data Sources</h4>
-        Clicking the "databases" icon on the left of the Tad window will open the <i>Data Sources</i> sidebar. This will show
-        a hierarchical tree browser of data sources you have open. 
-        If you open a directory or folder, you will see a tree view of the folder hierarchy and tabular data
-        files supported formats, like this:
+        <h4>数据源</h4>
+        点击 Tad 窗口左侧的"数据库"图标将打开<i>数据源</i>侧边栏。这将显示
+        您已打开的数据源的层次树浏览器。
+        如果您打开一个目录或文件夹，您将看到文件夹层次结构和支持格式的表格数据文件的树形视图，如下所示：
         <P>
         <img src="images/tad-data-sources.png"></img>
         <P>
-        You can quickly switch between different tables or tabular data files by clicking on the individual tables or files
-        in the data sources tree.
-        If you open a <code>.duckdb</code> or <code>.sqlite</code> file, the file will appear as a top level node
-        in the data sources tree, with children for the tables contained in the file.
-<!--
-        <h3>Data Sources</h3>
-        <p>
-        If you work in data science, chances are you have no shortage of CSV files of your own to explore.
-        In addition to the <a href='#' onclick='tadOpenExample()'>movie_metadata.csv</a> sample file included with Tad, a few of my favorite data sources on the Internet are:
-        <ul>
-          <li><a href="https://www.kaggle.com/datasets" onclick='tadOpenExternal(event,"https://www.kaggle.com/datasets")'>Kaggle Datasets</a>. The <code>movie_metadata.csv</code> file used for many Tad examples is from the <a href="https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset"
-            onclick='tadOpenExternal(event,"https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset")'>IMDB 5000 Movie Dataset</a> on Kaggle.
-          <li><a href="https://github.com/metmuseum/openaccess" onclick='tadOpenExternal(event,"https://github.com/metmuseum/openaccess")'>Met Museum Open Access Initiative</a>. The Metropolitan Museum of Art recently made 420,000 artworks available online for unrestricted use. The catalog file <code>MetObjects.csv</code> available at the linked github repository is a good example for testing Tad's ability to handle larger CSV files. It's a 228MB CSV file with 420,000 rows of data. It takes about 13 sec to load and display this file in Tad on my late 2013 MacBook Pro.
-          <li>The <a href="https://github.com/fivethirtyeight/data" onclick='tadOpenExternal(event,"https://github.com/fivethirtyeight/data")'>FiveThirtyEight github repository</a> has many CSV files providing data behind the stories and interactives on the FiveThirtyEight web site.
-        </ul>
--->
-        <h3>Going Further (Developers and Data Hackers)</h3>
+        您可以通过点击数据源树中的各个表或文件来快速切换不同的表或表格数据文件。
+        如果您打开 <code>.duckdb</code> 或 <code>.sqlite</code> 文件，该文件将作为数据源树中的顶层节点出现，
+        其子节点为文件中包含的表。
+        <h3>进阶（开发者和数据爱好者）</h3>
         <P>
-        If for some reason you want to see the gnarly details of the SQL queries that Tad is constructing and executing, you can use the <code>-f</code> option on the command line to keep Tad in the foreground and <code>--show-queries</code> to get Tad to print the generated SQL queries like so:
+        如果您想查看 Tad 构建和执行的 SQL 查询的详细信息，可以使用命令行上的 <code>-f</code> 选项保持 Tad 在前台运行，并使用 <code>--show-queries</code> 让 Tad 打印生成的 SQL 查询：
 <pre>
 $ tad -f --show-queries somefile.csv
 </pre>
-        Not for the faint-hearted.
         <P>
-        <h3>And Finally...</h3>
+        <h3>最后...</h3>
         <P>
-        Have fun! I hope you find Tad a useful utility for viewing and analyzing data. <a href="mailto:tad-feedback@tadviewer.com" onclick='tadOpenExternal(event,"mailto:tad-feedback@tadviewer.com")'>  Feedback welcome</a>.
+        祝您使用愉快！希望 Tad 能成为您查看和分析数据的有用工具。<a href="mailto:tad-feedback@tadviewer.com" onclick='tadOpenExternal(event,"mailto:tad-feedback@tadviewer.com")'>欢迎反馈</a>。
         <P>
       </div>
     </main>
@@ -199,14 +171,14 @@ $ tad -f --show-queries somefile.csv
   function unixSetup(installCmd) {
     const title = 'macOS'
     const content=`
-    <P>To launch tad from the command line, you need to ensure the Tad launcher shell script is on your <code>PATH</code>. If you have administrative rights on your machine, run the following command to create a symbolic link to <code>tad.sh</code> in <code>/usr/local/bin</code>:
+    <P>要从命令行启动 tad，您需要确保 Tad 启动器脚本在您的 <code>PATH</code> 中。如果您有管理员权限，请运行以下命令在 <code>/usr/local/bin</code> 中创建指向 <code>tad.sh</code> 的符号链接：
   <br>
   <br>
   <div class="input-group">
      <input type="text" id="install-cmd" class="form-control code" value="${installCmd}"></input>
      <span class="input-group-btn">
        <button class="btn btn-default" type="button" data-clipboard-target="#install-cmd">
-        <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>Copy
+        <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>复制
        </button>
      </span>
   </div><!-- /input-group -->
@@ -216,7 +188,7 @@ $ tad -f --show-queries somefile.csv
   function winSetup(appDir) {
     const title='Windows'
     const content=`
-On Windows, you should use the Control Panel to add <code>${appDir}</code> to your <code>PATH</code> environment variable.
+在 Windows 上，您应该使用控制面板将 <code>${appDir}</code> 添加到 <code>PATH</code> 环境变量中。
 `
     return titledPanel(title, content)
   }

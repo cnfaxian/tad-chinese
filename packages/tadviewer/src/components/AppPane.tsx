@@ -132,12 +132,12 @@ const ExportProgressDialog: React.FunctionComponent<ExportDialogProps> = ({
     }
   }
 
-  const exportWord = isBusy ? "Exporting" : "Exported";
+  const exportWord = isBusy ? "正在导出" : "已导出";
   const exportEllipsis = isBusy ? "..." : "";
-  const exportText = `${exportWord} ${filterCountStr} rows to ${appState.exportPathBaseName}${exportEllipsis}`;
+  const exportText = `${exportWord} ${filterCountStr} 行到 ${appState.exportPathBaseName}${exportEllipsis}`;
   return (
     <Dialog
-      title="Export File"
+      title="导出文件"
       onClose={() => handleExportProgressDialogClose(stateRef)}
       isOpen={appState.exportProgressDialogOpen}
     >
@@ -156,7 +156,7 @@ const ExportProgressDialog: React.FunctionComponent<ExportDialogProps> = ({
             elementRef={okButtonRef}
             onClick={() => handleExportProgressDialogClose(stateRef)}
           >
-            OK
+            确定
           </Button>
         </div>
       </div>
@@ -181,13 +181,13 @@ export const ParquetOptionsSection: React.FunctionComponent<
   return (
     <>
       <Button onClick={() => setIsExpanded(!isExpanded)}>
-        Parquet Options...
+        Parquet 选项...
       </Button>
       <Collapse isOpen={isExpanded}>
         <div className={Classes.DIALOG_BODY}>
           <FormGroup
             inline={true}
-            label="Compression"
+            label="压缩方式"
             labelFor="parquet-compression-select"
           >
             <HTMLSelect
@@ -275,13 +275,13 @@ const ExportBeginDialog: React.FunctionComponent<ExportBeginDialogProps> = ({
 
   return (
     <Dialog
-      title="Export"
+      title="导出"
       onClose={() => handleExportBeginDialogClose(stateRef)}
       isOpen={appState.exportBeginDialogOpen}
     >
       <div className={Classes.DIALOG_BODY}>
-        <p className="bp4-text-large">Export {filterCountStr} rows</p>
-        <FormGroup label="File Format" labelFor="export-format-select">
+        <p className="bp4-text-large">导出 {filterCountStr} 行</p>
+        <FormGroup label="文件格式" labelFor="export-format-select">
           <HTMLSelect
             id="export-format-select"
             value={exportFormat}
@@ -294,7 +294,7 @@ const ExportBeginDialog: React.FunctionComponent<ExportBeginDialogProps> = ({
             ]}
           />
         </FormGroup>
-        <FormGroup label="Export To File" labelFor="export-path">
+        <FormGroup label="导出到文件" labelFor="export-path">
           <InputGroup
             id="export-path"
             value={exportPath}
@@ -345,33 +345,33 @@ const ViewConfirmDialog: React.FunctionComponent<ViewConfirmDialogProps> = ({
 }: ViewConfirmDialogProps) => {
   return (
     <Dialog
-      title="Open Table"
+      title="打开表"
       onClose={() => handleViewConfirmDialogClose(stateRef)}
       isOpen={appState.viewConfirmDialogOpen}
     >
       <div className={Classes.DIALOG_BODY}>
         <p className="bp4-text-large">
-          You have unsaved changes to the current view. <br />
-          Do you want to:
+          当前视图有未保存的更改。<br />
+          是否：
         </p>
       </div>
       <div className={Classes.DIALOG_FOOTER}>
         <div className={Classes.DIALOG_FOOTER_ACTIONS}>
           <Button onClick={() => handleViewConfirmDialogReplace(stateRef)}>
-            Replace Current View
+            替换当前视图
           </Button>
           <Button
             onClick={() =>
               handleViewConfirmDialogNewWindow(newWindow, stateRef)
             }
           >
-            Open in New Window
+            在新窗口中打开
           </Button>
           <Button
             intent="primary"
             onClick={() => handleViewConfirmDialogClose(stateRef)}
           >
-            Cancel
+            取消
           </Button>
         </div>
       </div>

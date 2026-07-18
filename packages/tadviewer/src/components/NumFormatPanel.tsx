@@ -89,15 +89,15 @@ export const NumFormatPanel: React.FC<NumFormatPanelProps> = ({
       value={opts.formatMethod}
       onChange={(event) => handleFormatMethodSelect(event)}
     >
-      <option value="toString">System Default</option>
-      <option value="toLocaleString">Custom</option>
+      <option value="toString">系统默认</option>
+      <option value="toLocaleString">自定义</option>
     </select>
   );
 
   return (
     <div className="format-subpanel num-format-panel">
       <Label>
-        Formatting Method&nbsp;
+        格式化方式&nbsp;
         {formatMethodSelect}
       </Label>
       <Checkbox
@@ -105,10 +105,10 @@ export const NumFormatPanel: React.FC<NumFormatPanelProps> = ({
         checked={opts.commas}
         disabled={opts.formatMethod === "toString" || opts.exponential}
         onChange={(event) => handleCommasChange(event)}
-        label="Use (,) as 1000s Separator"
+        label="使用 (,) 作为千位分隔符"
       />
       <label className="bp4-label bp4-inline">
-        Decimal Places
+        小数位数
         <input
           className="bp4-input"
           type="text"
@@ -122,7 +122,7 @@ export const NumFormatPanel: React.FC<NumFormatPanelProps> = ({
         checked={opts.exponential}
         disabled={opts.formatMethod === "toString"}
         onChange={(event) => handleExponentialChange(event)}
-        label="Use Scientific (exponential) Notation"
+        label="使用科学计数法"
       />
     </div>
   );

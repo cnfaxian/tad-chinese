@@ -231,7 +231,7 @@ const init = async () => {
       err.message,
       err.stack
     );
-    remoteErrorDialog("Error initializing Tad", err.message, true);
+    remoteErrorDialog("初始化 Tad 出错", err.message, true);
   }
 };
 init();

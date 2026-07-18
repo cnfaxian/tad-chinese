@@ -69,7 +69,7 @@ export const ColumnList: React.FC<ColumnListProps> = ({
         <table className="table column-selector-table">
           <thead>
             <tr>
-              <th className="column-list-th col-colName">Column</th>
+              <th className="column-list-th col-colName">列</th>
               {extraHeaders}
             </tr>
           </thead>

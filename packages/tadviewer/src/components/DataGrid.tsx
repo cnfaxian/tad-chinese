@@ -364,19 +364,99 @@ const createGrid = (
   const gridOptions = getGridOptions(props);
   let grid = new Slick.Grid(`#${containerId}`, dataView, columns, gridOptions);
 
+  const applyRowHighlight = (grid: any, selectedRows: Set<number>) => {
+    const canvas = grid.getCanvasNode();
+    if (!canvas) return;
+    const rowNodes = canvas.querySelectorAll(".slick-row");
+    const rowHeight = grid.getOptions().rowHeight || 25;
+    rowNodes.forEach((rowNode: Element) => {
+      const topStr = rowNode.getAttribute("style") || "";
+      const match = topStr.match(/top:\s*(\d+)px/);
+      if (match) {
+        const rowIndex = Math.round(parseInt(match[1]) / rowHeight);
+        if (selectedRows.has(rowIndex)) {
+          rowNode.classList.add("tad-row-highlight");
+        } else {
+          rowNode.classList.remove("tad-row-highlight");
+        }
+      }
+    });
+  };
+
+  const applyColHighlight = (grid: any, selectedColumns: Set<number>) => {
+    const canvas = grid.getCanvasNode();
+    if (!canvas) return;
+
+    // Remove existing column highlights
+    canvas.querySelectorAll(".tad-col-highlight").forEach((cell: Element) => {
+      cell.classList.remove("tad-col-highlight");
+    });
+
+    // Apply column highlights
+    if (selectedColumns.size > 0) {
+      const rowNodes = canvas.querySelectorAll(".slick-row");
+      rowNodes.forEach((rowNode: Element) => {
+        const cells = rowNode.querySelectorAll(".slick-cell");
+        cells.forEach((cell: Element, cellIndex: number) => {
+          if (selectedColumns.has(cellIndex)) {
+            cell.classList.add("tad-col-highlight");
+          }
+        });
+      });
+    }
+
+    // Highlight column headers
+    const headerNode = grid.getHeaderNode();
+    if (headerNode) {
+      headerNode.querySelectorAll(".slick-header-column").forEach((col: Element, colIndex: number) => {
+        if (selectedColumns.has(colIndex)) {
+          col.classList.add("tad-col-header-highlight");
+        } else {
+          col.classList.remove("tad-col-header-highlight");
+        }
+      });
+    }
+  };
+
   const selectionModel = new CellSelectionModel();
   grid.setSelectionModel(selectionModel);
   selectionModel.onSelectedRangesChanged.subscribe((e: any, args: any) => {
+    const gridData = grid.getData();
+
+    if (!args || args.length === 0) {
+      (gridData as PagedDataView).setSelectedRows(new Set());
+      (gridData as PagedDataView).setSelectedColumns(new Set());
+      grid.invalidateAllRows();
+      grid.render();
+      applyRowHighlight(grid, new Set());
+      applyColHighlight(grid, new Set());
+      return;
+    }
+
     const { fromCell, toCell, fromRow, toRow } = args[0];
 
-    const selectedColumns = grid
+    const selectedRows = new Set<number>();
+    for (let row = fromRow; row <= toRow; row++) {
+      selectedRows.add(row);
+    }
+    const selectedColumns = new Set<number>();
+    for (let col = fromCell; col <= toCell; col++) {
+      selectedColumns.add(col);
+    }
+    (gridData as PagedDataView).setSelectedRows(selectedRows);
+    (gridData as PagedDataView).setSelectedColumns(selectedColumns);
+    grid.invalidateAllRows();
+    grid.render();
+    applyRowHighlight(grid, selectedRows);
+    applyColHighlight(grid, selectedColumns);
+
+    const selectedColumnIds = grid
       .getColumns()
       .slice(fromCell, toCell + 1)
       .map((col: any) => col.id);
 
     let items = [];
     const gridCols = grid.getColumns();
-    const gridData = grid.getData();
 
     for (let row = fromRow; row <= toRow; row++) {
       const rowData = gridData.getItem(row);
@@ -391,7 +471,7 @@ const createGrid = (
     onGridSelectionChange?.(
       { row: fromRow, column: fromCell },
       { row: toRow, column: toCell },
-      selectedColumns,
+      selectedColumnIds,
       items
     );
   });
@@ -587,6 +667,8 @@ const updateGrid = (gs: GridState, props: DataGridProps) => {
   // May want or need to optimize for that case.
   grid.setColumns(gridCols);
   grid.setData(dataView);
+  dataView!.setSelectedRows(new Set());
+  dataView!.setSelectedColumns(new Set());
 
   // update sort columns:
   const vpSortKey = sortKey

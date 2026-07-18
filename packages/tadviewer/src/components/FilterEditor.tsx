@@ -105,8 +105,8 @@ export const FilterEditor: React.FunctionComponent<FilterEditorProps> = ({
             <select
               onChange={(e) => handleOpChange(e.target.value as reltab.BoolOp)}
             >
-              <option value="AND">All Of (AND)</option>
-              <option value="OR">Any Of (OR)</option>
+              <option value="AND">全部满足 (AND)</option>
+              <option value="OR">任一满足 (OR)</option>
             </select>
           </div>
         </div>

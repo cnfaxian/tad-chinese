@@ -82,26 +82,26 @@ export const PivotSidebar: React.FC<PivotSidebarProps> = ({
       className="bp4-condensed"
       checked={viewParams.showColumnHistograms}
       onChange={() => actions.toggleShowColumnHistograms(stateRef)}
-      label="Show Numeric Column Histograms"
+      label="显示数字列直方图"
     />
   );
 
   return (
     <Sidebar expanded={expanded}>
       <div className="ui-block">
-        <h5 className="bp4-heading">General</h5>
+        <h5 className="bp4-heading">常规</h5>
         <div className="root-check-group">
           {columnHistoCheckElem}
           <Checkbox
             className="bp4-condensed"
             checked={viewParams.showRoot}
             onChange={() => actions.toggleShowRoot(stateRef)}
-            label="Show Global Aggregations as Top Row"
+            label="在首行显示全局聚合"
           />
         </div>
       </div>
       <div className="ui-block">
-        <h5 className="bp4-heading">Columns</h5>
+        <h5 className="bp4-heading">列</h5>
         <ColumnSelector
           schema={schema}
           viewParams={viewParams}
@@ -110,20 +110,20 @@ export const PivotSidebar: React.FC<PivotSidebarProps> = ({
         />
         <SingleColumnSelect
           schema={schema}
-          label="Pivot Tree Leaf Level"
+          label="透视树叶子级别"
           value={viewParams.pivotLeafColumn}
           disabled={viewParams.vpivots.length === 0}
           onChange={(e) => onLeafColumnSelect(e)}
         />
       </div>
       <div className="ui-block addl-col-props">
-        <h5 className="bp4-heading">Additional Properties</h5>
+        <h5 className="bp4-heading">附加属性</h5>
         <Tabs animate={false} id="ColumnPropTabs">
-          <Tab id="shownColumnsTab" title="Order" panel={displayPanel} />
-          <Tab id="pivotColumnsTab" title="Pivot" panel={pivotPanel} />
-          <Tab id="sortColumnsTab" title="Sort" panel={sortPanel} />
-          <Tab id="aggColumnsTab" title="Aggregations" panel={aggPanel} />
-          <Tab id="formatColumnsTab" title="Format" panel={formatPanel} />
+          <Tab id="shownColumnsTab" title="排列" panel={displayPanel} />
+          <Tab id="pivotColumnsTab" title="透视" panel={pivotPanel} />
+          <Tab id="sortColumnsTab" title="排序" panel={sortPanel} />
+          <Tab id="aggColumnsTab" title="聚合" panel={aggPanel} />
+          <Tab id="formatColumnsTab" title="格式" panel={formatPanel} />
         </Tabs>
       </div>
     </Sidebar>

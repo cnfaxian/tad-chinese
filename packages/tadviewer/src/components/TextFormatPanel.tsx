@@ -29,7 +29,7 @@ export const TextFormatPanel: React.FC<TextFormatPanelProps> = ({
         className="bp4-condensed"
         checked={opts.urlsAsHyperlinks}
         onChange={(event) => handleRenderHyperlinksChange(event)}
-        label="Render URLs as Hyperlinks"
+        label="将 URL 渲染为超链接"
       />
     </div>
   );

@@ -108,28 +108,28 @@ export const FormatPanel: React.FC<FormatPanelProps> = ({
       value={colKind}
       onChange={(event) => handleTypeSelect(event)}
     >
-      <option value="string">string</option>
-      <option value="integer">integer</option>
-      <option value="real">real</option>
+      <option value="string">字符串</option>
+      <option value="integer">整数</option>
+      <option value="real">浮点数</option>
     </select>
   );
   return (
     <div className="ui-block">
-      <h6 className="bp4-heading">Apply To</h6>
+      <h6 className="bp4-heading">应用于</h6>
       <div className="bp4-form-group">
         <RadioGroup
           selectedValue={formatKind}
           onChange={(event) => handleFormatKind(event)}
         >
-          <Radio label="Default for Columns of Type " value="default">
+          <Radio label="按类型默认 " value="default">
             {colKindSelect}
           </Radio>
-          <Radio label="Specific Column " value="column">
+          <Radio label="指定列 " value="column">
             {columnSelect}
           </Radio>
         </RadioGroup>
       </div>
-      <h6 className="bp4-heading">Format Properties</h6>
+      <h6 className="bp4-heading">格式属性</h6>
       {formatPanel}
     </div>
   );

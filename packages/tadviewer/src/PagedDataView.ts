@@ -19,6 +19,8 @@ export class PagedDataView {
   totalRowCount: number;
   offset: number;
   rawData: Array<DataRow>;
+  private _selectedRows: Set<number>;
+  private _selectedColumns: Set<number>;
 
   constructor(
     schema: reltab.Schema,
@@ -29,8 +31,22 @@ export class PagedDataView {
     this.schema = schema;
     this.totalRowCount = totalRowCount;
     this.offset = offset;
-    this.rawData = items; // console.log('PagedDataView: trc: ', totalRowCount, ', offset: ', offset)
-  } // Unfortunately ambiguous method name comes from SlickGrid
+    this.rawData = items;
+    this._selectedRows = new Set();
+    this._selectedColumns = new Set();
+  }
+
+  setSelectedRows(rows: Set<number>): void {
+    this._selectedRows = rows;
+  }
+
+  setSelectedColumns(cols: Set<number>): void {
+    this._selectedColumns = cols;
+  }
+
+  getSelectedColumns(): Set<number> {
+    return this._selectedColumns;
+  }
 
   getLength(): number {
     return this.totalRowCount;
@@ -61,6 +77,12 @@ export class PagedDataView {
 
     if (item && !item._isLeaf) {
       ret.cssClasses = "grid-aggregate-row";
+    }
+
+    if (this._selectedRows.has(index)) {
+      ret.cssClasses = ret.cssClasses
+        ? ret.cssClasses + " tad-row-highlight"
+        : "tad-row-highlight";
     }
 
     return ret;

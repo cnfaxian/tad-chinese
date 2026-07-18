@@ -29,7 +29,7 @@ export const SingleColumnSelect: React.FC<SingleColumnSelectProps> = ({
   const colOptions = columnIds.map((cid) => renderColOption(cid));
   const noneOption = (
     <option key="__none" value="__none">
-      none
+      无
     </option>
   );
   colOptions.unshift(noneOption);
@@ -37,7 +37,7 @@ export const SingleColumnSelect: React.FC<SingleColumnSelectProps> = ({
   const selVal = propVal === null ? "__none" : propVal;
   return (
     <div className="pivot-leaf-select">
-      <label>Pivot Tree Leaf Level:</label>
+      <label>透视树叶子级别：</label>
       <select
         className="scs-select"
         disabled={disabled}

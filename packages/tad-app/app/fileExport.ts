@@ -60,7 +60,7 @@ const exportParquet = async (
     const err = rawErr as Error;
     win.webContents.send("close-export-progress-dialog");
 
-    dialog.showErrorBox("Error saving file: ", err.toString());
+    dialog.showErrorBox("保存文件出错：", err.toString());
   }
   win.webContents.send("export-progress", {
     percentComplete: 1,

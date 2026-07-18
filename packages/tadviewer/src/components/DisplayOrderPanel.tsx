@@ -20,7 +20,7 @@ export const DisplayOrderPanel: React.FC<DisplayOrderPanelProps> = ({
   return (
     <div className="ui-block">
       <h6 className="bp4-heading">
-        Displayed Columns <span className="bp4-ui-text">(drag to reorder)</span>
+        显示列 <span className="bp4-ui-text">（拖动重新排序）</span>
       </h6>
       <ColumnList
         schema={schema}

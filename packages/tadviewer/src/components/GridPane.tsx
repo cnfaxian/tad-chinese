@@ -68,7 +68,7 @@ const GridPaneInternal: React.FunctionComponent<GridPaneProps> = ({
     const pivotNames = viewParams.vpivots.map((cid) => schema.displayName(cid));
     const leafCid = viewParams.pivotLeafColumn;
     let leafPivotStr = leafCid ? " > " + schema.displayName(leafCid) : "";
-    pivotColumnDisplayName = "Pivot: " + pivotNames.join(" > ") + leafPivotStr;
+    pivotColumnDisplayName = "透视: " + pivotNames.join(" > ") + leafPivotStr;
   }
 
   const showHiddenColumns = viewParams.showHiddenCols;
