@@ -34,11 +34,26 @@ Tad 是一款用于查看和分析表格数据的桌面应用程序，支持 CSV
 - 列标题同步高亮显示
 - 便于在大数据集中快速定位当前选中位置
 
+### 日期时间时区修复
+
+修复了日期/时间列的时区显示问题：
+
+- **修复前**：所有时间戳统一使用 `toISOString()` 输出 UTC 时间（带 `Z` 后缀），导致带时区的时间显示不正确。例如存储 `03:15:00+08:00` 会显示为 `19:15:00.000Z`
+- **修复后**：
+  - `TIMESTAMP`（无时区）：显示本地时间，如 `03:15:00`
+  - `TIMESTAMPTZ` / `TIMESTAMP WITH TIME ZONE`：显示本地时间 + 时区偏移，如 `03:15:00+08:00`
+  - `DATE`：仅显示日期部分（不变）
+- 修改文件：`packages/reltab/src/dialects/DuckDBDialect.ts`
+
 ## 下载使用
 
 前往 [Releases](https://github.com/cnfaxian/tad-chinese/releases) 页面下载最新版本。
 
-下载 `Tad-0.14.0-portable.exe` 便携版，双击即可运行，无需安装。
+| 平台 | 文件 | 说明 |
+|------|------|------|
+| Windows | `Tad 0.14.0.exe` | 便携版，双击即用 |
+| Linux | `tad-0.14.0.tar.gz` | 解压后运行可执行文件 |
+| macOS | 需在 Mac 上构建 | `npx electron-builder --mac zip` |
 
 ## 从源码构建
 
@@ -50,7 +65,8 @@ Tad 是一款用于查看和分析表格数据的桌面应用程序，支持 CSV
 
 - 全部用户界面翻译为中文
 - 新增单元格选中行/列高亮功能
-- 提供 Windows 便携版打包
+- 修复日期时间列的时区显示问题
+- 提供 Windows/Linux 便携版打包
 
 ### 核心包说明
 

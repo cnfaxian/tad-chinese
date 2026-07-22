@@ -19,7 +19,27 @@ function isDuckDBStringRenderer(val: any): val is DuckDBStringRenderer {
   );
 }
 
-const createTimestampStringRenderer = (dateOnly = false) => ({
+const pad2 = (n: number): string => String(n).padStart(2, "0");
+
+const getTimezoneOffset = (d: Date): string => {
+  const offset = -d.getTimezoneOffset();
+  const sign = offset >= 0 ? "+" : "-";
+  const hours = pad2(Math.floor(Math.abs(offset) / 60));
+  const minutes = pad2(Math.abs(offset) % 60);
+  return `${sign}${hours}:${minutes}`;
+};
+
+const formatLocalDateTime = (d: Date): string => {
+  return (
+    `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}` +
+    `T${pad2(d.getHours())}:${pad2(d.getMinutes())}:${pad2(d.getSeconds())}`
+  );
+};
+
+const createTimestampStringRenderer = (
+  dateOnly = false,
+  withTimeZone = false
+) => ({
   stringRender: (val: any) => {
     if (val == null) {
       return "";
@@ -29,8 +49,14 @@ const createTimestampStringRenderer = (dateOnly = false) => ({
     }
     let retStr: string;
     try {
-      retStr = new Date(val).toISOString();
-      if (dateOnly) retStr = retStr.split("T")[0];
+      const d = new Date(val);
+      if (withTimeZone) {
+        retStr = formatLocalDateTime(d) + getTimezoneOffset(d);
+      } else if (dateOnly) {
+        retStr = d.toISOString().split("T")[0];
+      } else {
+        retStr = formatLocalDateTime(d);
+      }
     } catch (err) {
       if (err instanceof RangeError) {
         console.info(
@@ -44,7 +70,6 @@ const createTimestampStringRenderer = (dateOnly = false) => ({
           err
         );
       }
-      // Not a lot of great choices here; we'll render as the raw numeric timestamp value
       retStr = String(val);
     }
     return retStr;
@@ -86,19 +111,19 @@ const datetimeCT = new ColumnType(
 const timesWithTimeZoneCT = new ColumnType(
   "TIME WITH TIME ZONE",
   "timestamp",
-  createTimestampStringRenderer()
+  createTimestampStringRenderer(false, true)
 );
 
 const timestampWithTimeZoneCT = new ColumnType(
   "TIMESTAMP WITH TIME ZONE",
   "timestamp",
-  createTimestampStringRenderer()
+  createTimestampStringRenderer(false, true)
 );
 
 const timestampTZCT = new ColumnType(
   "TIMESTAMPTZ",
   "timestamp",
-  createTimestampStringRenderer()
+  createTimestampStringRenderer(false, true)
 );
 
 const dateCT = new ColumnType(
