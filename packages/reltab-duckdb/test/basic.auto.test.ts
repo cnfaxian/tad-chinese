@@ -27,7 +27,7 @@ const q1 = reltab.tableQuery("barttest");
 test("t0 - trivial query generation", () => {
   expect(q1).toMatchInlineSnapshot(`
     QueryExp {
-      "_rep": Object {
+      "_rep": {
         "operator": "table",
         "tableName": "barttest",
       },
@@ -332,12 +332,12 @@ test("basic DuckDb types", async () => {
   console.log("rowData: ", rowData);
 
   expect(rowData).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "b": true,
         "i": 99,
       },
-      Object {
+      {
         "b": false,
         "i": 87,
       },
@@ -361,11 +361,11 @@ test("DuckDb date type", async () => {
   console.log("rowData: ", rowData);
 
   expect(rowData).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "d": 1991-07-21T00:00:00.000Z,
       },
-      Object {
+      {
         "d": 2022-02-11T00:00:00.000Z,
       },
     ]
@@ -411,17 +411,17 @@ test("DuckDb timestamp types", async () => {
   const fmtRows = getFormattedRows(q0res);
 
   expect(fmtRows).toMatchInlineSnapshot(`
-    Array [
-      Array [
+    [
+      [
         "1991-07-21T11:30:00.000Z",
-        "1991-07-21T11:30:00.000Z",
-        "1991-07-21T11:30:00.000Z",
+        "1991-07-21T20:30:00+09:00",
+        "1991-07-21T20:30:00",
         "1991-07-21",
       ],
-      Array [
+      [
         "2022-02-11T14:15:45.000Z",
-        "2022-02-11T14:15:45.000Z",
-        "2022-02-11T14:15:45.000Z",
+        "2022-02-11T22:15:45+08:00",
+        "2022-02-11T22:15:45",
         "2022-02-11",
       ],
     ]

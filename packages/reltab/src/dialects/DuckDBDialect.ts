@@ -47,32 +47,11 @@ const createTimestampStringRenderer = (
     if (isDuckDBStringRenderer(val)) {
       return val.toDuckDBString();
     }
-    let retStr: string;
-    try {
-      const d = new Date(val);
-      if (withTimeZone) {
-        retStr = formatLocalDateTime(d) + getTimezoneOffset(d);
-      } else if (dateOnly) {
-        retStr = d.toISOString().split("T")[0];
-      } else {
-        retStr = formatLocalDateTime(d);
-      }
-    } catch (err) {
-      if (err instanceof RangeError) {
-        console.info(
-          "*** DuckDbDialect: Error converting Invalid time value: ",
-          val
-        );
-      } else {
-        console.warn(
-          "*** DuckDbDialect: Error converting timestamp: ",
-          val,
-          err
-        );
-      }
-      retStr = String(val);
+    const str = String(val);
+    if (str.endsWith("Z")) {
+      return str.slice(0, -1) + "+00:00";
     }
-    return retStr;
+    return str;
   },
 });
 

@@ -2,36 +2,36 @@
 
 exports[`basic extend composed with project 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Job Family": "Executive Management",
       "Name": "Crunican, Grace",
       "TCOE": 399921n,
       "Title": "General Manager",
       "_depth": 0,
     },
-    Object {
+    {
       "Job Family": "Executive Management",
       "Name": "Dugger, Dorothy",
       "TCOE": 419661n,
       "Title": "General Manager",
       "_depth": 0,
     },
-    Object {
+    {
       "Job Family": "Executive Management",
       "Name": "Oversier, Paul",
       "TCOE": 288160n,
       "Title": "Assistant General Manager Operations",
       "_depth": 0,
     },
-    Object {
+    {
       "Job Family": "Executive Management",
       "Name": "DeVaughn, Marcia",
       "TCOE": 281548n,
       "Title": "Deputy General Manager",
       "_depth": 0,
     },
-    Object {
+    {
       "Job Family": "Safety",
       "Name": "Hardy, Leonard",
       "TCOE": 211941n,
@@ -39,30 +39,30 @@ TableRep {
       "_depth": 0,
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Job Family": Object {
+  "schema": {
+    "columnMetadata": {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "_depth": Object {
+      "_depth": {
         "columnType": "INTEGER",
         "displayName": "_depth",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Job Family",
@@ -76,8 +76,8 @@ TableRep {
 
 exports[`basic extend with const col 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 312461n,
       "Job Family": "Executive Management",
       "Name": "Crunican, Grace",
@@ -86,7 +86,7 @@ TableRep {
       "Union": "Non-Represented",
       "_depth": 0,
     },
-    Object {
+    {
       "Base": 298700n,
       "Job Family": "Executive Management",
       "Name": "Dugger, Dorothy",
@@ -95,7 +95,7 @@ TableRep {
       "Union": "Non-Represented",
       "_depth": 0,
     },
-    Object {
+    {
       "Base": 212647n,
       "Job Family": "Executive Management",
       "Name": "Oversier, Paul",
@@ -104,7 +104,7 @@ TableRep {
       "Union": "Non-Represented",
       "_depth": 0,
     },
-    Object {
+    {
       "Base": 206914n,
       "Job Family": "Executive Management",
       "Name": "DeVaughn, Marcia",
@@ -113,7 +113,7 @@ TableRep {
       "Union": "Non-Represented",
       "_depth": 0,
     },
-    Object {
+    {
       "Base": 152125n,
       "Job Family": "Safety",
       "Name": "Hardy, Leonard",
@@ -123,38 +123,38 @@ TableRep {
       "_depth": 0,
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
-      "_depth": Object {
+      "_depth": {
         "columnType": "INTEGER",
         "displayName": "_depth",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Base",
@@ -170,8 +170,8 @@ TableRep {
 
 exports[`basic filter 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 312461n,
       "Job Family": "Executive Management",
       "Name": "Crunican, Grace",
@@ -179,7 +179,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 298700n,
       "Job Family": "Executive Management",
       "Name": "Dugger, Dorothy",
@@ -187,7 +187,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 212647n,
       "Job Family": "Executive Management",
       "Name": "Oversier, Paul",
@@ -195,7 +195,7 @@ TableRep {
       "Title": "Assistant General Manager Operations",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 206914n,
       "Job Family": "Executive Management",
       "Name": "DeVaughn, Marcia",
@@ -204,34 +204,34 @@ TableRep {
       "Union": "Non-Represented",
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Base",
@@ -246,131 +246,131 @@ TableRep {
 
 exports[`basic groupBy 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Job Family": "Transportation Operations",
       "TCOE": 238211n,
       "Title": "Chief Transportation Officer",
     },
-    Object {
-      "Job Family": "Maintenance, Vehicle & Facilities",
-      "TCOE": 128332n,
-      "Title": "Wayside Inspector",
-    },
-    Object {
-      "Job Family": "Transportation Operations",
-      "TCOE": 352988n,
-      "Title": "Station Agent",
-    },
-    Object {
-      "Job Family": "Executive Management",
-      "TCOE": 281548n,
-      "Title": "Deputy General Manager",
-    },
-    Object {
+    {
       "Job Family": "Transportation Operations",
       "TCOE": 118799n,
       "Title": "Train Operator",
     },
-    Object {
-      "Job Family": "Maintenance, Vehicle & Facilities",
-      "TCOE": 113775n,
-      "Title": "Electrician",
-    },
-    Object {
-      "Job Family": "Executive Management",
-      "TCOE": 288160n,
-      "Title": "Assistant General Manager Operations",
-    },
-    Object {
-      "Job Family": "Legal & Paralegal",
-      "TCOE": 321543n,
-      "Title": "General Counsel",
-    },
-    Object {
-      "Job Family": "Legal & Paralegal",
-      "TCOE": 445028n,
-      "Title": "Senior Attorney",
-    },
-    Object {
-      "Job Family": "Safety",
-      "TCOE": 211941n,
-      "Title": "Chief Safety Officer",
-    },
-    Object {
-      "Job Family": "Maintenance, Vehicle & Facilities",
-      "TCOE": 124962n,
-      "Title": "Structures Inspector",
-    },
-    Object {
-      "Job Family": "Maintenance, Vehicle & Facilities",
-      "TCOE": 123432n,
-      "Title": "Vehicle Inspector",
-    },
-    Object {
-      "Job Family": "Police",
-      "TCOE": 127660n,
-      "Title": "Revenue Protection Guard",
-    },
-    Object {
-      "Job Family": "Executive Management",
-      "TCOE": 819582n,
-      "Title": "General Manager",
-    },
-    Object {
-      "Job Family": "Finance & Accounting",
-      "TCOE": 287139n,
-      "Title": "Controller-Treasurer",
-    },
-    Object {
-      "Job Family": "Public Affairs & Marketing",
-      "TCOE": 181955n,
-      "Title": "Department Manager Gov't & Comm Rel",
-    },
-    Object {
-      "Job Family": "Engineering & Systems Engineering",
-      "TCOE": 212535n,
-      "Title": "Group Manager Systems Capital Prog",
-    },
-    Object {
+    {
       "Job Family": "Maintenance, Vehicle & Facilities",
       "TCOE": 104260n,
       "Title": "Transit Vehicle Mechanic",
     },
-    Object {
+    {
+      "Job Family": "Transportation Operations",
+      "TCOE": 352988n,
+      "Title": "Station Agent",
+    },
+    {
+      "Job Family": "Executive Management",
+      "TCOE": 819582n,
+      "Title": "General Manager",
+    },
+    {
+      "Job Family": "Safety",
+      "TCOE": 211941n,
+      "Title": "Chief Safety Officer",
+    },
+    {
+      "Job Family": "Maintenance, Vehicle & Facilities",
+      "TCOE": 124962n,
+      "Title": "Structures Inspector",
+    },
+    {
+      "Job Family": "Public Affairs & Marketing",
+      "TCOE": 181955n,
+      "Title": "Department Manager Gov't & Comm Rel",
+    },
+    {
+      "Job Family": "Maintenance, Vehicle & Facilities",
+      "TCOE": 128332n,
+      "Title": "Wayside Inspector",
+    },
+    {
       "Job Family": "Engineering & Systems Engineering",
       "TCOE": 209709n,
       "Title": "Group Manager, Capital Projects",
     },
+    {
+      "Job Family": "Maintenance, Vehicle & Facilities",
+      "TCOE": 113775n,
+      "Title": "Electrician",
+    },
+    {
+      "Job Family": "Executive Management",
+      "TCOE": 288160n,
+      "Title": "Assistant General Manager Operations",
+    },
+    {
+      "Job Family": "Engineering & Systems Engineering",
+      "TCOE": 212535n,
+      "Title": "Group Manager Systems Capital Prog",
+    },
+    {
+      "Job Family": "Legal & Paralegal",
+      "TCOE": 321543n,
+      "Title": "General Counsel",
+    },
+    {
+      "Job Family": "Finance & Accounting",
+      "TCOE": 287139n,
+      "Title": "Controller-Treasurer",
+    },
+    {
+      "Job Family": "Executive Management",
+      "TCOE": 281548n,
+      "Title": "Deputy General Manager",
+    },
+    {
+      "Job Family": "Legal & Paralegal",
+      "TCOE": 445028n,
+      "Title": "Senior Attorney",
+    },
+    {
+      "Job Family": "Maintenance, Vehicle & Facilities",
+      "TCOE": 123432n,
+      "Title": "Vehicle Inspector",
+    },
+    {
+      "Job Family": "Police",
+      "TCOE": 127660n,
+      "Title": "Revenue Protection Guard",
+    },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
     },
-    "columns": Array [
+    "columns": [
       "Job Family",
       "Title",
       "TCOE",
@@ -382,8 +382,8 @@ TableRep {
 
 exports[`basic project operator 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 312461n,
       "Job Family": "Executive Management",
       "Name": "Crunican, Grace",
@@ -391,7 +391,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 298700n,
       "Job Family": "Executive Management",
       "Name": "Dugger, Dorothy",
@@ -399,7 +399,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 238269n,
       "Job Family": "Legal & Paralegal",
       "Name": "Burrows, Matthew",
@@ -407,7 +407,7 @@ TableRep {
       "Title": "General Counsel",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 212647n,
       "Job Family": "Executive Management",
       "Name": "Oversier, Paul",
@@ -415,7 +415,7 @@ TableRep {
       "Title": "Assistant General Manager Operations",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 208744n,
       "Job Family": "Finance & Accounting",
       "Name": "Schroeder, Scott",
@@ -423,7 +423,7 @@ TableRep {
       "Title": "Controller-Treasurer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 206914n,
       "Job Family": "Executive Management",
       "Name": "DeVaughn, Marcia",
@@ -431,7 +431,7 @@ TableRep {
       "Title": "Deputy General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 170383n,
       "Job Family": "Transportation Operations",
       "Name": "Crespo, Rodolfo",
@@ -439,7 +439,7 @@ TableRep {
       "Title": "Chief Transportation Officer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 165470n,
       "Job Family": "Legal & Paralegal",
       "Name": "Lee, Thomas",
@@ -447,7 +447,7 @@ TableRep {
       "Title": "Senior Attorney",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 160289n,
       "Job Family": "Legal & Paralegal",
       "Name": "Nuetzel, Victoria",
@@ -455,7 +455,7 @@ TableRep {
       "Title": "Senior Attorney",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 157300n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Ruffa, Frank",
@@ -463,7 +463,7 @@ TableRep {
       "Title": "Group Manager, Capital Projects",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152434n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Dupont, Jean-Luc",
@@ -471,7 +471,7 @@ TableRep {
       "Title": "Group Manager Systems Capital Prog",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152125n,
       "Job Family": "Safety",
       "Name": "Hardy, Leonard",
@@ -479,7 +479,7 @@ TableRep {
       "Title": "Chief Safety Officer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Hui, Sam",
@@ -487,7 +487,7 @@ TableRep {
       "Title": "Wayside Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Reinhardt, Michael",
@@ -495,7 +495,7 @@ TableRep {
       "Title": "Structures Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Estrada, Phillip",
@@ -503,7 +503,7 @@ TableRep {
       "Title": "Vehicle Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 75701n,
       "Job Family": "Police",
       "Name": "Ornellas, Robert",
@@ -511,7 +511,7 @@ TableRep {
       "Title": "Revenue Protection Guard",
       "Union": "BPOA",
     },
-    Object {
+    {
       "Base": 74068n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Smith, Daniel",
@@ -519,7 +519,7 @@ TableRep {
       "Title": "Transit Vehicle Mechanic",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 61184n,
       "Job Family": "Transportation Operations",
       "Name": "Smith, Westley",
@@ -527,7 +527,7 @@ TableRep {
       "Title": "Train Operator",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 130035n,
       "Job Family": "Public Affairs & Marketing",
       "Name": "Hamill, Kerry",
@@ -535,7 +535,7 @@ TableRep {
       "Title": "Department Manager Gov't & Comm Rel",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 60790n,
       "Job Family": "Transportation Operations",
       "Name": "Serrianni, Cheryl",
@@ -543,7 +543,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 60781n,
       "Job Family": "Transportation Operations",
       "Name": "Nagel, Kevin",
@@ -551,7 +551,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 60771n,
       "Job Family": "Transportation Operations",
       "Name": "Riggs, Joshua",
@@ -559,7 +559,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 59817n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Knight, Joshua",
@@ -568,34 +568,34 @@ TableRep {
       "Union": "SEIU",
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
     },
-    "columns": Array [
+    "columns": [
       "Job Family",
       "Title",
       "Union",
@@ -610,8 +610,8 @@ TableRep {
 
 exports[`basic sort 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 312461n,
       "Job Family": "Executive Management",
       "Name": "Crunican, Grace",
@@ -619,7 +619,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 206914n,
       "Job Family": "Executive Management",
       "Name": "DeVaughn, Marcia",
@@ -627,7 +627,7 @@ TableRep {
       "Title": "Deputy General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 298700n,
       "Job Family": "Executive Management",
       "Name": "Dugger, Dorothy",
@@ -635,7 +635,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152125n,
       "Job Family": "Safety",
       "Name": "Hardy, Leonard",
@@ -643,7 +643,7 @@ TableRep {
       "Title": "Chief Safety Officer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 212647n,
       "Job Family": "Executive Management",
       "Name": "Oversier, Paul",
@@ -652,34 +652,34 @@ TableRep {
       "Union": "Non-Represented",
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Base",
@@ -694,8 +694,8 @@ TableRep {
 
 exports[`chained extend 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 312461n,
       "Job Family": "Executive Management",
       "Name": "Crunican, Grace",
@@ -705,7 +705,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 298700n,
       "Job Family": "Executive Management",
       "Name": "Dugger, Dorothy",
@@ -715,7 +715,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 238269n,
       "Job Family": "Legal & Paralegal",
       "Name": "Burrows, Matthew",
@@ -725,7 +725,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 212647n,
       "Job Family": "Executive Management",
       "Name": "Oversier, Paul",
@@ -735,7 +735,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 208744n,
       "Job Family": "Finance & Accounting",
       "Name": "Schroeder, Scott",
@@ -745,7 +745,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 206914n,
       "Job Family": "Executive Management",
       "Name": "DeVaughn, Marcia",
@@ -755,7 +755,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 170383n,
       "Job Family": "Transportation Operations",
       "Name": "Crespo, Rodolfo",
@@ -765,7 +765,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 165470n,
       "Job Family": "Legal & Paralegal",
       "Name": "Lee, Thomas",
@@ -775,7 +775,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 160289n,
       "Job Family": "Legal & Paralegal",
       "Name": "Nuetzel, Victoria",
@@ -785,7 +785,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 157300n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Ruffa, Frank",
@@ -795,7 +795,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 152434n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Dupont, Jean-Luc",
@@ -805,7 +805,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 152125n,
       "Job Family": "Safety",
       "Name": "Hardy, Leonard",
@@ -815,7 +815,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Hui, Sam",
@@ -825,7 +825,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Reinhardt, Michael",
@@ -835,7 +835,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Estrada, Phillip",
@@ -845,7 +845,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 75701n,
       "Job Family": "Police",
       "Name": "Ornellas, Robert",
@@ -855,7 +855,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 74068n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Smith, Daniel",
@@ -865,7 +865,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 61184n,
       "Job Family": "Transportation Operations",
       "Name": "Smith, Westley",
@@ -875,7 +875,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 130035n,
       "Job Family": "Public Affairs & Marketing",
       "Name": "Hamill, Kerry",
@@ -885,7 +885,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 60790n,
       "Job Family": "Transportation Operations",
       "Name": "Serrianni, Cheryl",
@@ -895,7 +895,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 60781n,
       "Job Family": "Transportation Operations",
       "Name": "Nagel, Kevin",
@@ -905,7 +905,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 60771n,
       "Job Family": "Transportation Operations",
       "Name": "Riggs, Joshua",
@@ -915,7 +915,7 @@ TableRep {
       "_depth": 0,
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 59817n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Knight, Joshua",
@@ -926,42 +926,42 @@ TableRep {
       "_pivot": null,
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
-      "_depth": Object {
+      "_depth": {
         "columnType": "INTEGER",
         "displayName": "_depth",
       },
-      "_pivot": Object {
+      "_pivot": {
         "columnType": "VARCHAR",
         "displayName": "_pivot",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Base",
@@ -978,8 +978,8 @@ TableRep {
 
 exports[`compound key sort 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 298700n,
       "Job Family": "Executive Management",
       "Name": "Dugger, Dorothy",
@@ -987,7 +987,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 312461n,
       "Job Family": "Executive Management",
       "Name": "Crunican, Grace",
@@ -995,7 +995,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 212647n,
       "Job Family": "Executive Management",
       "Name": "Oversier, Paul",
@@ -1003,7 +1003,7 @@ TableRep {
       "Title": "Assistant General Manager Operations",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 206914n,
       "Job Family": "Executive Management",
       "Name": "DeVaughn, Marcia",
@@ -1011,7 +1011,7 @@ TableRep {
       "Title": "Deputy General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152125n,
       "Job Family": "Safety",
       "Name": "Hardy, Leonard",
@@ -1020,34 +1020,34 @@ TableRep {
       "Union": "Non-Represented",
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Base",
@@ -1062,8 +1062,8 @@ TableRep {
 
 exports[`extend with binary expression col 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 312461n,
       "Job Family": "Executive Management",
       "Name": "Crunican, Grace",
@@ -1072,7 +1072,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 298700n,
       "Job Family": "Executive Management",
       "Name": "Dugger, Dorothy",
@@ -1081,7 +1081,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 238269n,
       "Job Family": "Legal & Paralegal",
       "Name": "Burrows, Matthew",
@@ -1090,7 +1090,7 @@ TableRep {
       "Title": "General Counsel",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 212647n,
       "Job Family": "Executive Management",
       "Name": "Oversier, Paul",
@@ -1099,7 +1099,7 @@ TableRep {
       "Title": "Assistant General Manager Operations",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 208744n,
       "Job Family": "Finance & Accounting",
       "Name": "Schroeder, Scott",
@@ -1108,7 +1108,7 @@ TableRep {
       "Title": "Controller-Treasurer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 206914n,
       "Job Family": "Executive Management",
       "Name": "DeVaughn, Marcia",
@@ -1117,7 +1117,7 @@ TableRep {
       "Title": "Deputy General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 170383n,
       "Job Family": "Transportation Operations",
       "Name": "Crespo, Rodolfo",
@@ -1126,7 +1126,7 @@ TableRep {
       "Title": "Chief Transportation Officer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 165470n,
       "Job Family": "Legal & Paralegal",
       "Name": "Lee, Thomas",
@@ -1135,7 +1135,7 @@ TableRep {
       "Title": "Senior Attorney",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 160289n,
       "Job Family": "Legal & Paralegal",
       "Name": "Nuetzel, Victoria",
@@ -1144,7 +1144,7 @@ TableRep {
       "Title": "Senior Attorney",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 157300n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Ruffa, Frank",
@@ -1153,7 +1153,7 @@ TableRep {
       "Title": "Group Manager, Capital Projects",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152434n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Dupont, Jean-Luc",
@@ -1162,7 +1162,7 @@ TableRep {
       "Title": "Group Manager Systems Capital Prog",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152125n,
       "Job Family": "Safety",
       "Name": "Hardy, Leonard",
@@ -1171,7 +1171,7 @@ TableRep {
       "Title": "Chief Safety Officer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Hui, Sam",
@@ -1180,7 +1180,7 @@ TableRep {
       "Title": "Wayside Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Reinhardt, Michael",
@@ -1189,7 +1189,7 @@ TableRep {
       "Title": "Structures Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Estrada, Phillip",
@@ -1198,7 +1198,7 @@ TableRep {
       "Title": "Vehicle Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 75701n,
       "Job Family": "Police",
       "Name": "Ornellas, Robert",
@@ -1207,7 +1207,7 @@ TableRep {
       "Title": "Revenue Protection Guard",
       "Union": "BPOA",
     },
-    Object {
+    {
       "Base": 74068n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Smith, Daniel",
@@ -1216,7 +1216,7 @@ TableRep {
       "Title": "Transit Vehicle Mechanic",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 61184n,
       "Job Family": "Transportation Operations",
       "Name": "Smith, Westley",
@@ -1225,7 +1225,7 @@ TableRep {
       "Title": "Train Operator",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 130035n,
       "Job Family": "Public Affairs & Marketing",
       "Name": "Hamill, Kerry",
@@ -1234,7 +1234,7 @@ TableRep {
       "Title": "Department Manager Gov't & Comm Rel",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 60790n,
       "Job Family": "Transportation Operations",
       "Name": "Serrianni, Cheryl",
@@ -1243,7 +1243,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 60781n,
       "Job Family": "Transportation Operations",
       "Name": "Nagel, Kevin",
@@ -1252,7 +1252,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 60771n,
       "Job Family": "Transportation Operations",
       "Name": "Riggs, Joshua",
@@ -1261,7 +1261,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 59817n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Knight, Joshua",
@@ -1271,38 +1271,38 @@ TableRep {
       "Union": "SEIU",
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "Overhead": Object {
+      "Overhead": {
         "columnType": "INTEGER",
         "displayName": "Overhead",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Base",
@@ -1318,8 +1318,8 @@ TableRep {
 
 exports[`extend with binary expression col and casts 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 312461n,
       "BasePct": 0.7813068080945987,
       "Job Family": "Executive Management",
@@ -1328,7 +1328,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 298700n,
       "BasePct": 0.7117649722037549,
       "Job Family": "Executive Management",
@@ -1337,7 +1337,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 238269n,
       "BasePct": 0.7410175310922645,
       "Job Family": "Legal & Paralegal",
@@ -1346,7 +1346,7 @@ TableRep {
       "Title": "General Counsel",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 212647n,
       "BasePct": 0.7379476679622432,
       "Job Family": "Executive Management",
@@ -1355,7 +1355,7 @@ TableRep {
       "Title": "Assistant General Manager Operations",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 208744n,
       "BasePct": 0.7269789196173282,
       "Job Family": "Finance & Accounting",
@@ -1364,7 +1364,7 @@ TableRep {
       "Title": "Controller-Treasurer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 206914n,
       "BasePct": 0.7349155383806669,
       "Job Family": "Executive Management",
@@ -1373,7 +1373,7 @@ TableRep {
       "Title": "Deputy General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 170383n,
       "BasePct": 0.7152608401795048,
       "Job Family": "Transportation Operations",
@@ -1382,7 +1382,7 @@ TableRep {
       "Title": "Chief Transportation Officer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 165470n,
       "BasePct": 0.7375693686063874,
       "Job Family": "Legal & Paralegal",
@@ -1391,7 +1391,7 @@ TableRep {
       "Title": "Senior Attorney",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 160289n,
       "BasePct": 0.7263314346823272,
       "Job Family": "Legal & Paralegal",
@@ -1400,7 +1400,7 @@ TableRep {
       "Title": "Senior Attorney",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 157300n,
       "BasePct": 0.7500870253541813,
       "Job Family": "Engineering & Systems Engineering",
@@ -1409,7 +1409,7 @@ TableRep {
       "Title": "Group Manager, Capital Projects",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152434n,
       "BasePct": 0.7172183405086221,
       "Job Family": "Engineering & Systems Engineering",
@@ -1418,7 +1418,7 @@ TableRep {
       "Title": "Group Manager Systems Capital Prog",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152125n,
       "BasePct": 0.7177705116046447,
       "Job Family": "Safety",
@@ -1427,7 +1427,7 @@ TableRep {
       "Title": "Chief Safety Officer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 77446n,
       "BasePct": 0.60348159461397,
       "Job Family": "Maintenance, Vehicle & Facilities",
@@ -1436,7 +1436,7 @@ TableRep {
       "Title": "Wayside Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 77446n,
       "BasePct": 0.619756405947408,
       "Job Family": "Maintenance, Vehicle & Facilities",
@@ -1445,7 +1445,7 @@ TableRep {
       "Title": "Structures Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 77446n,
       "BasePct": 0.6274385896688055,
       "Job Family": "Maintenance, Vehicle & Facilities",
@@ -1454,7 +1454,7 @@ TableRep {
       "Title": "Vehicle Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 75701n,
       "BasePct": 0.5929891900360332,
       "Job Family": "Police",
@@ -1463,7 +1463,7 @@ TableRep {
       "Title": "Revenue Protection Guard",
       "Union": "BPOA",
     },
-    Object {
+    {
       "Base": 74068n,
       "BasePct": 0.7104162670247458,
       "Job Family": "Maintenance, Vehicle & Facilities",
@@ -1472,7 +1472,7 @@ TableRep {
       "Title": "Transit Vehicle Mechanic",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 61184n,
       "BasePct": 0.5150211702118704,
       "Job Family": "Transportation Operations",
@@ -1481,7 +1481,7 @@ TableRep {
       "Title": "Train Operator",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 130035n,
       "BasePct": 0.7146547223214531,
       "Job Family": "Public Affairs & Marketing",
@@ -1490,7 +1490,7 @@ TableRep {
       "Title": "Department Manager Gov't & Comm Rel",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 60790n,
       "BasePct": 0.4604256608346588,
       "Job Family": "Transportation Operations",
@@ -1499,7 +1499,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 60781n,
       "BasePct": 0.5741965348498875,
       "Job Family": "Transportation Operations",
@@ -1508,7 +1508,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 60771n,
       "BasePct": 0.5279660133444537,
       "Job Family": "Transportation Operations",
@@ -1517,7 +1517,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 59817n,
       "BasePct": 0.5257481872116019,
       "Job Family": "Maintenance, Vehicle & Facilities",
@@ -1527,38 +1527,38 @@ TableRep {
       "Union": "SEIU",
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "BasePct": Object {
+      "BasePct": {
         "columnType": "DOUBLE",
         "displayName": "BasePct",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Base",
@@ -1574,8 +1574,8 @@ TableRep {
 
 exports[`extend with unary op round 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 312461n,
       "BasePct": 0.7813068080945987,
       "BasePctInt": 78,
@@ -1585,7 +1585,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 298700n,
       "BasePct": 0.7117649722037549,
       "BasePctInt": 71,
@@ -1595,7 +1595,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 238269n,
       "BasePct": 0.7410175310922645,
       "BasePctInt": 74,
@@ -1605,7 +1605,7 @@ TableRep {
       "Title": "General Counsel",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 212647n,
       "BasePct": 0.7379476679622432,
       "BasePctInt": 74,
@@ -1615,7 +1615,7 @@ TableRep {
       "Title": "Assistant General Manager Operations",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 208744n,
       "BasePct": 0.7269789196173282,
       "BasePctInt": 73,
@@ -1625,7 +1625,7 @@ TableRep {
       "Title": "Controller-Treasurer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 206914n,
       "BasePct": 0.7349155383806669,
       "BasePctInt": 73,
@@ -1635,7 +1635,7 @@ TableRep {
       "Title": "Deputy General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 170383n,
       "BasePct": 0.7152608401795048,
       "BasePctInt": 72,
@@ -1645,7 +1645,7 @@ TableRep {
       "Title": "Chief Transportation Officer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 165470n,
       "BasePct": 0.7375693686063874,
       "BasePctInt": 74,
@@ -1655,7 +1655,7 @@ TableRep {
       "Title": "Senior Attorney",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 160289n,
       "BasePct": 0.7263314346823272,
       "BasePctInt": 73,
@@ -1665,7 +1665,7 @@ TableRep {
       "Title": "Senior Attorney",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 157300n,
       "BasePct": 0.7500870253541813,
       "BasePctInt": 75,
@@ -1675,7 +1675,7 @@ TableRep {
       "Title": "Group Manager, Capital Projects",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152434n,
       "BasePct": 0.7172183405086221,
       "BasePctInt": 72,
@@ -1685,7 +1685,7 @@ TableRep {
       "Title": "Group Manager Systems Capital Prog",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152125n,
       "BasePct": 0.7177705116046447,
       "BasePctInt": 72,
@@ -1695,7 +1695,7 @@ TableRep {
       "Title": "Chief Safety Officer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 77446n,
       "BasePct": 0.60348159461397,
       "BasePctInt": 60,
@@ -1705,7 +1705,7 @@ TableRep {
       "Title": "Wayside Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 77446n,
       "BasePct": 0.619756405947408,
       "BasePctInt": 62,
@@ -1715,7 +1715,7 @@ TableRep {
       "Title": "Structures Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 77446n,
       "BasePct": 0.6274385896688055,
       "BasePctInt": 63,
@@ -1725,7 +1725,7 @@ TableRep {
       "Title": "Vehicle Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 75701n,
       "BasePct": 0.5929891900360332,
       "BasePctInt": 59,
@@ -1735,7 +1735,7 @@ TableRep {
       "Title": "Revenue Protection Guard",
       "Union": "BPOA",
     },
-    Object {
+    {
       "Base": 74068n,
       "BasePct": 0.7104162670247458,
       "BasePctInt": 71,
@@ -1745,7 +1745,7 @@ TableRep {
       "Title": "Transit Vehicle Mechanic",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 61184n,
       "BasePct": 0.5150211702118704,
       "BasePctInt": 52,
@@ -1755,7 +1755,7 @@ TableRep {
       "Title": "Train Operator",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 130035n,
       "BasePct": 0.7146547223214531,
       "BasePctInt": 71,
@@ -1765,7 +1765,7 @@ TableRep {
       "Title": "Department Manager Gov't & Comm Rel",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 60790n,
       "BasePct": 0.4604256608346588,
       "BasePctInt": 46,
@@ -1775,7 +1775,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 60781n,
       "BasePct": 0.5741965348498875,
       "BasePctInt": 57,
@@ -1785,7 +1785,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 60771n,
       "BasePct": 0.5279660133444537,
       "BasePctInt": 53,
@@ -1795,7 +1795,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 59817n,
       "BasePct": 0.5257481872116019,
       "BasePctInt": 53,
@@ -1806,42 +1806,42 @@ TableRep {
       "Union": "SEIU",
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "BasePct": Object {
+      "BasePct": {
         "columnType": "DOUBLE",
         "displayName": "BasePct",
       },
-      "BasePctInt": Object {
+      "BasePctInt": {
         "columnType": "DOUBLE",
         "displayName": "BasePctInt",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Base",
@@ -1857,7 +1857,7 @@ TableRep {
 `;
 
 exports[`getSourceInfo basics 1`] = `
-Object {
+{
   "displayName": ":memory:",
   "id": ":memory:",
   "isContainer": true,
@@ -1867,8 +1867,8 @@ Object {
 
 exports[`null const extend 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 312461n,
       "Job Family": "Executive Management",
       "Name": "Crunican, Grace",
@@ -1877,7 +1877,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 298700n,
       "Job Family": "Executive Management",
       "Name": "Dugger, Dorothy",
@@ -1886,7 +1886,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 238269n,
       "Job Family": "Legal & Paralegal",
       "Name": "Burrows, Matthew",
@@ -1895,7 +1895,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 212647n,
       "Job Family": "Executive Management",
       "Name": "Oversier, Paul",
@@ -1904,7 +1904,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 208744n,
       "Job Family": "Finance & Accounting",
       "Name": "Schroeder, Scott",
@@ -1913,7 +1913,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 206914n,
       "Job Family": "Executive Management",
       "Name": "DeVaughn, Marcia",
@@ -1922,7 +1922,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 170383n,
       "Job Family": "Transportation Operations",
       "Name": "Crespo, Rodolfo",
@@ -1931,7 +1931,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 165470n,
       "Job Family": "Legal & Paralegal",
       "Name": "Lee, Thomas",
@@ -1940,7 +1940,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 160289n,
       "Job Family": "Legal & Paralegal",
       "Name": "Nuetzel, Victoria",
@@ -1949,7 +1949,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 157300n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Ruffa, Frank",
@@ -1958,7 +1958,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 152434n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Dupont, Jean-Luc",
@@ -1967,7 +1967,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 152125n,
       "Job Family": "Safety",
       "Name": "Hardy, Leonard",
@@ -1976,7 +1976,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Hui, Sam",
@@ -1985,7 +1985,7 @@ TableRep {
       "Union": "SEIU",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Reinhardt, Michael",
@@ -1994,7 +1994,7 @@ TableRep {
       "Union": "SEIU",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Estrada, Phillip",
@@ -2003,7 +2003,7 @@ TableRep {
       "Union": "SEIU",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 75701n,
       "Job Family": "Police",
       "Name": "Ornellas, Robert",
@@ -2012,7 +2012,7 @@ TableRep {
       "Union": "BPOA",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 74068n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Smith, Daniel",
@@ -2021,7 +2021,7 @@ TableRep {
       "Union": "SEIU",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 61184n,
       "Job Family": "Transportation Operations",
       "Name": "Smith, Westley",
@@ -2030,7 +2030,7 @@ TableRep {
       "Union": "ATU",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 130035n,
       "Job Family": "Public Affairs & Marketing",
       "Name": "Hamill, Kerry",
@@ -2039,7 +2039,7 @@ TableRep {
       "Union": "Non-Represented",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 60790n,
       "Job Family": "Transportation Operations",
       "Name": "Serrianni, Cheryl",
@@ -2048,7 +2048,7 @@ TableRep {
       "Union": "ATU",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 60781n,
       "Job Family": "Transportation Operations",
       "Name": "Nagel, Kevin",
@@ -2057,7 +2057,7 @@ TableRep {
       "Union": "ATU",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 60771n,
       "Job Family": "Transportation Operations",
       "Name": "Riggs, Joshua",
@@ -2066,7 +2066,7 @@ TableRep {
       "Union": "ATU",
       "_pivot": null,
     },
-    Object {
+    {
       "Base": 59817n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Knight, Joshua",
@@ -2076,38 +2076,38 @@ TableRep {
       "_pivot": null,
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
-      "_pivot": Object {
+      "_pivot": {
         "columnType": "VARCHAR",
         "displayName": "_pivot",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Base",
@@ -2123,19 +2123,19 @@ TableRep {
 
 exports[`q1 - basic sqlQuery 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "num": 42,
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "num": Object {
+  "schema": {
+    "columnMetadata": {
+      "num": {
         "columnType": "INTEGER",
         "displayName": "num",
       },
     },
-    "columns": Array [
+    "columns": [
       "num",
     ],
     "dialect": "duckdb",
@@ -2145,56 +2145,50 @@ TableRep {
 
 exports[`t1 - basic sqlite tableQuery 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
-      "column0": "firstName",
-      "column1": "lastName",
-      "column2": "email",
-      "column3": "phoneNumber",
+  "rowData": [
+    {
+      "email": "john@doe.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "phoneNumber": "0123456789",
     },
-    Object {
-      "column0": "John",
-      "column1": "Doe",
-      "column2": "john@doe.com",
-      "column3": "0123456789",
+    {
+      "email": "jane@doe.com",
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "phoneNumber": "9876543210",
     },
-    Object {
-      "column0": "Jane",
-      "column1": "Doe",
-      "column2": "jane@doe.com",
-      "column3": "9876543210",
-    },
-    Object {
-      "column0": "James",
-      "column1": "Bond",
-      "column2": "james.bond@mi6.co.uk",
-      "column3": "0612345678",
+    {
+      "email": "james.bond@mi6.co.uk",
+      "firstName": "James",
+      "lastName": "Bond",
+      "phoneNumber": "0612345678",
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "column0": Object {
+  "schema": {
+    "columnMetadata": {
+      "email": {
         "columnType": "VARCHAR",
-        "displayName": "column0",
+        "displayName": "email",
       },
-      "column1": Object {
+      "firstName": {
         "columnType": "VARCHAR",
-        "displayName": "column1",
+        "displayName": "firstName",
       },
-      "column2": Object {
+      "lastName": {
         "columnType": "VARCHAR",
-        "displayName": "column2",
+        "displayName": "lastName",
       },
-      "column3": Object {
+      "phoneNumber": {
         "columnType": "VARCHAR",
-        "displayName": "column3",
+        "displayName": "phoneNumber",
       },
     },
-    "columns": Array [
-      "column0",
-      "column1",
-      "column2",
-      "column3",
+    "columns": [
+      "firstName",
+      "lastName",
+      "email",
+      "phoneNumber",
     ],
     "dialect": "duckdb",
   },
@@ -2203,8 +2197,8 @@ TableRep {
 
 exports[`t2 - basic bart table query 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 312461n,
       "Job Family": "Executive Management",
       "Name": "Crunican, Grace",
@@ -2212,7 +2206,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 298700n,
       "Job Family": "Executive Management",
       "Name": "Dugger, Dorothy",
@@ -2220,7 +2214,7 @@ TableRep {
       "Title": "General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 238269n,
       "Job Family": "Legal & Paralegal",
       "Name": "Burrows, Matthew",
@@ -2228,7 +2222,7 @@ TableRep {
       "Title": "General Counsel",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 212647n,
       "Job Family": "Executive Management",
       "Name": "Oversier, Paul",
@@ -2236,7 +2230,7 @@ TableRep {
       "Title": "Assistant General Manager Operations",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 208744n,
       "Job Family": "Finance & Accounting",
       "Name": "Schroeder, Scott",
@@ -2244,7 +2238,7 @@ TableRep {
       "Title": "Controller-Treasurer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 206914n,
       "Job Family": "Executive Management",
       "Name": "DeVaughn, Marcia",
@@ -2252,7 +2246,7 @@ TableRep {
       "Title": "Deputy General Manager",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 170383n,
       "Job Family": "Transportation Operations",
       "Name": "Crespo, Rodolfo",
@@ -2260,7 +2254,7 @@ TableRep {
       "Title": "Chief Transportation Officer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 165470n,
       "Job Family": "Legal & Paralegal",
       "Name": "Lee, Thomas",
@@ -2268,7 +2262,7 @@ TableRep {
       "Title": "Senior Attorney",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 160289n,
       "Job Family": "Legal & Paralegal",
       "Name": "Nuetzel, Victoria",
@@ -2276,7 +2270,7 @@ TableRep {
       "Title": "Senior Attorney",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 157300n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Ruffa, Frank",
@@ -2284,7 +2278,7 @@ TableRep {
       "Title": "Group Manager, Capital Projects",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152434n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Dupont, Jean-Luc",
@@ -2292,7 +2286,7 @@ TableRep {
       "Title": "Group Manager Systems Capital Prog",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 152125n,
       "Job Family": "Safety",
       "Name": "Hardy, Leonard",
@@ -2300,7 +2294,7 @@ TableRep {
       "Title": "Chief Safety Officer",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Hui, Sam",
@@ -2308,7 +2302,7 @@ TableRep {
       "Title": "Wayside Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Reinhardt, Michael",
@@ -2316,7 +2310,7 @@ TableRep {
       "Title": "Structures Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Estrada, Phillip",
@@ -2324,7 +2318,7 @@ TableRep {
       "Title": "Vehicle Inspector",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 75701n,
       "Job Family": "Police",
       "Name": "Ornellas, Robert",
@@ -2332,7 +2326,7 @@ TableRep {
       "Title": "Revenue Protection Guard",
       "Union": "BPOA",
     },
-    Object {
+    {
       "Base": 74068n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Smith, Daniel",
@@ -2340,7 +2334,7 @@ TableRep {
       "Title": "Transit Vehicle Mechanic",
       "Union": "SEIU",
     },
-    Object {
+    {
       "Base": 61184n,
       "Job Family": "Transportation Operations",
       "Name": "Smith, Westley",
@@ -2348,7 +2342,7 @@ TableRep {
       "Title": "Train Operator",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 130035n,
       "Job Family": "Public Affairs & Marketing",
       "Name": "Hamill, Kerry",
@@ -2356,7 +2350,7 @@ TableRep {
       "Title": "Department Manager Gov't & Comm Rel",
       "Union": "Non-Represented",
     },
-    Object {
+    {
       "Base": 60790n,
       "Job Family": "Transportation Operations",
       "Name": "Serrianni, Cheryl",
@@ -2364,7 +2358,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 60781n,
       "Job Family": "Transportation Operations",
       "Name": "Nagel, Kevin",
@@ -2372,7 +2366,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 60771n,
       "Job Family": "Transportation Operations",
       "Name": "Riggs, Joshua",
@@ -2380,7 +2374,7 @@ TableRep {
       "Title": "Station Agent",
       "Union": "ATU",
     },
-    Object {
+    {
       "Base": 59817n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Knight, Joshua",
@@ -2389,34 +2383,34 @@ TableRep {
       "Union": "SEIU",
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Base",
@@ -2431,8 +2425,8 @@ TableRep {
 
 exports[`trivial table extend with const col 1`] = `
 TableRep {
-  "rowData": Array [
-    Object {
+  "rowData": [
+    {
       "Base": 312461n,
       "Job Family": "Executive Management",
       "Name": "Crunican, Grace",
@@ -2441,7 +2435,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 298700n,
       "Job Family": "Executive Management",
       "Name": "Dugger, Dorothy",
@@ -2450,7 +2444,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 238269n,
       "Job Family": "Legal & Paralegal",
       "Name": "Burrows, Matthew",
@@ -2459,7 +2453,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 212647n,
       "Job Family": "Executive Management",
       "Name": "Oversier, Paul",
@@ -2468,7 +2462,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 208744n,
       "Job Family": "Finance & Accounting",
       "Name": "Schroeder, Scott",
@@ -2477,7 +2471,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 206914n,
       "Job Family": "Executive Management",
       "Name": "DeVaughn, Marcia",
@@ -2486,7 +2480,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 170383n,
       "Job Family": "Transportation Operations",
       "Name": "Crespo, Rodolfo",
@@ -2495,7 +2489,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 165470n,
       "Job Family": "Legal & Paralegal",
       "Name": "Lee, Thomas",
@@ -2504,7 +2498,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 160289n,
       "Job Family": "Legal & Paralegal",
       "Name": "Nuetzel, Victoria",
@@ -2513,7 +2507,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 157300n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Ruffa, Frank",
@@ -2522,7 +2516,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 152434n,
       "Job Family": "Engineering & Systems Engineering",
       "Name": "Dupont, Jean-Luc",
@@ -2531,7 +2525,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 152125n,
       "Job Family": "Safety",
       "Name": "Hardy, Leonard",
@@ -2540,7 +2534,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Hui, Sam",
@@ -2549,7 +2543,7 @@ TableRep {
       "Union": "SEIU",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Reinhardt, Michael",
@@ -2558,7 +2552,7 @@ TableRep {
       "Union": "SEIU",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 77446n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Estrada, Phillip",
@@ -2567,7 +2561,7 @@ TableRep {
       "Union": "SEIU",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 75701n,
       "Job Family": "Police",
       "Name": "Ornellas, Robert",
@@ -2576,7 +2570,7 @@ TableRep {
       "Union": "BPOA",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 74068n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Smith, Daniel",
@@ -2585,7 +2579,7 @@ TableRep {
       "Union": "SEIU",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 61184n,
       "Job Family": "Transportation Operations",
       "Name": "Smith, Westley",
@@ -2594,7 +2588,7 @@ TableRep {
       "Union": "ATU",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 130035n,
       "Job Family": "Public Affairs & Marketing",
       "Name": "Hamill, Kerry",
@@ -2603,7 +2597,7 @@ TableRep {
       "Union": "Non-Represented",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 60790n,
       "Job Family": "Transportation Operations",
       "Name": "Serrianni, Cheryl",
@@ -2612,7 +2606,7 @@ TableRep {
       "Union": "ATU",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 60781n,
       "Job Family": "Transportation Operations",
       "Name": "Nagel, Kevin",
@@ -2621,7 +2615,7 @@ TableRep {
       "Union": "ATU",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 60771n,
       "Job Family": "Transportation Operations",
       "Name": "Riggs, Joshua",
@@ -2630,7 +2624,7 @@ TableRep {
       "Union": "ATU",
       "foo": 99,
     },
-    Object {
+    {
       "Base": 59817n,
       "Job Family": "Maintenance, Vehicle & Facilities",
       "Name": "Knight, Joshua",
@@ -2640,38 +2634,38 @@ TableRep {
       "foo": 99,
     },
   ],
-  "schema": Object {
-    "columnMetadata": Object {
-      "Base": Object {
+  "schema": {
+    "columnMetadata": {
+      "Base": {
         "columnType": "BIGINT",
         "displayName": "Base",
       },
-      "Job Family": Object {
+      "Job Family": {
         "columnType": "VARCHAR",
         "displayName": "Job Family",
       },
-      "Name": Object {
+      "Name": {
         "columnType": "VARCHAR",
         "displayName": "Name",
       },
-      "TCOE": Object {
+      "TCOE": {
         "columnType": "BIGINT",
         "displayName": "TCOE",
       },
-      "Title": Object {
+      "Title": {
         "columnType": "VARCHAR",
         "displayName": "Title",
       },
-      "Union": Object {
+      "Union": {
         "columnType": "VARCHAR",
         "displayName": "Union",
       },
-      "foo": Object {
+      "foo": {
         "columnType": "INTEGER",
         "displayName": "foo",
       },
     },
-    "columns": Array [
+    "columns": [
       "Name",
       "Title",
       "Base",
