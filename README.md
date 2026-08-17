@@ -56,7 +56,20 @@ Tad 是一款用于查看和分析表格数据的桌面应用程序，支持 CSV
 
 ## 从源码构建
 
-详细构建说明请参考 [doc/building.md](doc/building.md)
+- 通用构建说明：[doc/building.md](doc/building.md)
+- Linux 打包详细说明：[doc/linux-packaging.md](doc/linux-packaging.md)
+
+### 快速构建
+
+```bash
+# Linux 一键构建
+chmod +x tools/build-linux.sh
+./tools/build-linux.sh
+
+# 清理编译产物
+chmod +x tools/clean.sh
+./tools/clean.sh
+```
 
 ## 项目来源
 
