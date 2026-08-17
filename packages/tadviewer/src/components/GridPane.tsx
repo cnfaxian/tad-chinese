@@ -192,6 +192,7 @@ const GridPaneInternal: React.FunctionComponent<GridPaneProps> = ({
     showLoadingModal,
     showHiddenColumns,
     displayColumns,
+    displayTimezone: viewParams.displayTimezone,
     onViewportChanged,
     onHistogramBrushRange,
     onHistogramBrushFilter,

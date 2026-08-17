@@ -19,23 +19,6 @@ function isDuckDBStringRenderer(val: any): val is DuckDBStringRenderer {
   );
 }
 
-const pad2 = (n: number): string => String(n).padStart(2, "0");
-
-const getTimezoneOffset = (d: Date): string => {
-  const offset = -d.getTimezoneOffset();
-  const sign = offset >= 0 ? "+" : "-";
-  const hours = pad2(Math.floor(Math.abs(offset) / 60));
-  const minutes = pad2(Math.abs(offset) % 60);
-  return `${sign}${hours}:${minutes}`;
-};
-
-const formatLocalDateTime = (d: Date): string => {
-  return (
-    `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}` +
-    `T${pad2(d.getHours())}:${pad2(d.getMinutes())}:${pad2(d.getSeconds())}`
-  );
-};
-
 const createTimestampStringRenderer = (
   dateOnly = false,
   withTimeZone = false
@@ -47,11 +30,33 @@ const createTimestampStringRenderer = (
     if (isDuckDBStringRenderer(val)) {
       return val.toDuckDBString();
     }
-    const str = String(val);
-    if (str.endsWith("Z")) {
-      return str.slice(0, -1) + "+00:00";
+    // node-duckdb 直接返回 JS Date 时（本地调用/测试场景），
+    // 统一转成 UTC ISO 字符串再走文本处理；渲染进程场景收到的
+    // 本就是 JSON 序列化后的 ISO 字符串。
+    const str = val instanceof Date ? val.toISOString() : String(val);
+    if (dateOnly) {
+      return str.split("T")[0];
     }
-    return str;
+    if (withTimeZone) {
+      // 带时区列：显示"时刻 + 明确偏移"。Z 表示 UTC（+00:00），
+      // 已带 ±hh:mm 偏移的保留原始偏移，不做任何时区转换。
+      if (str.endsWith("Z")) {
+        return str.slice(0, -1).replace(/\.\d+$/, "") + "+00:00";
+      }
+      if (str.match(/[+-]\d{2}:\d{2}$/)) {
+        return str.slice(0, -6).replace(/\.\d+$/, "") + str.slice(-6);
+      }
+      return str.replace(/\.\d+$/, "");
+    }
+    // 无时区列：原样保留 wall-clock 值，仅做文本美化
+    // （去 Z 后缀、去毫秒、T 转空格），不附加任何时区偏移。
+    let ret = str;
+    if (ret.endsWith("Z")) {
+      ret = ret.slice(0, -1);
+    }
+    ret = ret.replace(/\.\d+$/, "");
+    ret = ret.replace("T", " ");
+    return ret;
   },
 });
 

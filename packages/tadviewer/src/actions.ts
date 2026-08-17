@@ -292,6 +292,18 @@ export const toggleShowColumnHistograms = (
     )
   );
 };
+export const setDisplayTimezone = (
+  tz: string | null,
+  stateRef: StateRef<AppState>
+): void => {
+  update(
+    stateRef,
+    vpUpdate(
+      (viewParams) =>
+        viewParams.set("displayTimezone", tz) as ViewParams
+    )
+  );
+};
 
 export const reorderColumnList = (dstProps: any, srcProps: any) => {
   console.log("reorderColumnList: ", dstProps, srcProps);

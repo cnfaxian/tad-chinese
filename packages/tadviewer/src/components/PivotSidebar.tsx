@@ -8,12 +8,13 @@ import { DisplayOrderPanel } from "./DisplayOrderPanel";
 import { SortOrderPanel } from "./SortOrderPanel";
 import { AggPanel } from "./AggPanel";
 import { FormatPanel } from "./FormatPanel";
-import { Checkbox, Tabs, Tab } from "@blueprintjs/core";
+import { Checkbox, Tabs, Tab, HTMLSelect } from "@blueprintjs/core";
 import * as reltab from "reltab";
 import { ViewParams } from "../ViewParams";
 import { StateRef, update } from "oneref";
 import { AppState } from "../AppState";
 import { useState } from "react";
+import { getTimezoneOptions } from "../timezoneUtils";
 
 export interface PivotSidebarProps {
   expanded: boolean;
@@ -86,6 +87,26 @@ export const PivotSidebar: React.FC<PivotSidebarProps> = ({
     />
   );
 
+  const timezoneSelectElem = (
+    <div className="bp4-select timezone-select">
+      <select
+        value={viewParams.displayTimezone ?? ""}
+        onChange={(e) =>
+          actions.setDisplayTimezone(
+            e.target.value === "" ? null : e.target.value,
+            stateRef
+          )
+        }
+      >
+        {getTimezoneOptions().map((opt) => (
+          <option key={opt.value ?? "__local__"} value={opt.value ?? ""}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+
   return (
     <Sidebar expanded={expanded}>
       <div className="ui-block">
@@ -98,6 +119,10 @@ export const PivotSidebar: React.FC<PivotSidebarProps> = ({
             onChange={() => actions.toggleShowRoot(stateRef)}
             label="在首行显示全局聚合"
           />
+        </div>
+        <div className="timezone-group">
+          <label className="bp4-label">时间戳时区</label>
+          {timezoneSelectElem}
         </div>
       </div>
       <div className="ui-block">

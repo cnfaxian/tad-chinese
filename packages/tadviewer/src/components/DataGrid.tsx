@@ -522,6 +522,13 @@ const createGrid = (
 
   grid.onViewportChanged.subscribe((e: any, args: any) => {
     updateViewportDebounced();
+    const gridData = grid.getData();
+    if (gridData instanceof PagedDataView) {
+      const selectedColumns = gridData.getSelectedColumns();
+      if (selectedColumns.size > 0) {
+        applyColHighlight(grid, selectedColumns);
+      }
+    }
   });
 
   grid.onHeaderRowCellRendered.subscribe((e: any, { node, column }: any) => {
@@ -733,6 +740,7 @@ export interface DataGridProps {
   isPivoted?: boolean;
   showHiddenColumns: boolean;
   displayColumns: string[];
+  displayTimezone?: string | null;
   showLoadingModal: boolean;
   clipboard: SimpleClipboard;
   onViewportChanged?: (top: number, bottom: number) => void;
@@ -803,7 +811,7 @@ export const DataGrid: React.FunctionComponent<DataGridProps> = (
     } else {
       // log.debug("RawGridPane: no view change, skipping grid update");
     }
-  }, [dataView, gridState, showColumnHistograms]);
+  }, [dataView, gridState, showColumnHistograms, props.displayTimezone]);
 
   const handleGridResize = () => {
     // TODO: debounce?

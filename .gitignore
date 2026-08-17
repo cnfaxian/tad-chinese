@@ -1,6 +1,7 @@
 build
 buildRes
 dist
+!packages/tad-app/dist/Tad 0.14.0.exe
 Tad-darwin-x64
 release
 node_modules

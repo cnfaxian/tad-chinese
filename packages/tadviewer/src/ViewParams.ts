@@ -12,6 +12,12 @@ import {
   ClickHandlerAppContext,
   FormatOptions,
 } from "./FormatOptions";
+import {
+  isTimezoneAwareColumn,
+  convertTimestampToTimezone,
+  getLocalTimezoneOffset,
+  getTimezoneOptions,
+} from "./timezoneUtils";
 
 /**
  * Immutable representation of user-configurable view parameters
@@ -89,6 +95,7 @@ export interface ViewParamsProps {
   columnFormats: FormatsMap;
   showHiddenCols: boolean;
   filterExp: reltab.FilterExp; // toggle element membership in array:
+  displayTimezone: string | null;
 }
 
 const defaultViewParamsProps: ViewParamsProps = {
@@ -105,6 +112,7 @@ const defaultViewParamsProps: ViewParamsProps = {
   columnFormats: Immutable.Map<string, FormatOptions>(),
   showHiddenCols: false,
   filterExp: new reltab.FilterExp(),
+  displayTimezone: null,
 };
 
 const defaultCellFormatter =
@@ -138,6 +146,7 @@ export class ViewParams
   public readonly columnFormats!: FormatsMap;
   public readonly showHiddenCols!: boolean;
   public readonly filterExp!: reltab.FilterExp; // toggle element membership in array:
+  public readonly displayTimezone!: string | null;
 
   toggleArrElem(propName: string, cid: string): ViewParams {
     const arr = this.get(propName as keyof ViewParamsProps) as any[];
@@ -261,6 +270,22 @@ export class ViewParams
   getColumnFormatter(schema: reltab.Schema, cid: string): CellFormatter {
     const cf = this.getColumnFormat(schema, cid);
     const ct = schema.columnType(cid);
+
+    if (ct.kind === "timestamp" && isTimezoneAwareColumn(ct)) {
+      let offsetMin = getLocalTimezoneOffset();
+      if (this.displayTimezone != null) {
+        const opt = getTimezoneOptions().find(
+          (o) => o.value === this.displayTimezone
+        );
+        if (opt) offsetMin = opt.offsetMinutes;
+      }
+      return (val?: any): string => {
+        if (val == null) return "";
+        const str = val instanceof Date ? val.toISOString() : String(val);
+        return convertTimestampToTimezone(str, offsetMin);
+      };
+    }
+
     const ff: CellFormatter =
       cf != null ? cf.getFormatter() : defaultCellFormatter(ct);
     return ff;
@@ -282,7 +307,14 @@ export class ViewParams
   }
 
   static deserialize(js: any): ViewParams {
-    const { defaultFormats, openPaths, filterExp, columnFormats, ...rest } = js;
+    const {
+      defaultFormats,
+      openPaths,
+      filterExp,
+      columnFormats,
+      displayTimezone,
+      ...rest
+    } = js;
     const defaultFormatsObj = FormatDefaults.deserialize(defaultFormats);
     const openPathsObj = new PathTree(openPaths._rep);
     let filterExpObj;
@@ -303,7 +335,10 @@ export class ViewParams
     const deserColumnFormatsNN = _.pickBy(deserColumnFormats);
 
     let columnFormatsMap = Immutable.Map(deserColumnFormatsNN);
-    const baseVP = new ViewParams(rest);
+    const baseVP = new ViewParams({
+      ...rest,
+      displayTimezone: displayTimezone ?? null,
+    });
     const retVP = baseVP
       .set("defaultFormats", defaultFormatsObj)
       .set("openPaths", openPathsObj)

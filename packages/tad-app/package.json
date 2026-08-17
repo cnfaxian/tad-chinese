@@ -109,9 +109,13 @@
       "examples"
     ],
     "files": [
-      "dist/**/*",
-      "build",
-      "node_modules"
+      "dist/index.html",
+      "dist/main.bundle.js",
+      "dist/preload.js",
+      "dist/tadapp.bundle.js",
+      "dist/tadapp.bundle.js.LICENSE.txt",
+      "dist/userdocs/**/*",
+      "build"
     ],
     "fileAssociations": [
       {
