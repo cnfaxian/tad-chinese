@@ -22,7 +22,16 @@ import {
 import * as reltabDuckDB from "reltab-duckdb";
 import { DuckDBDriver } from "reltab-duckdb";
 
-export const dataFileExtensions = ["csv", "tsv", "parquet", "csv.gz", "tsv.gz"];
+export const dataFileExtensions = [
+  "csv",
+  "tsv",
+  "csv.gz",
+  "tsv.gz",
+  "parquet",
+  "txt",
+  "data",
+  "log",
+];
 
 interface ImportedFileInfo {
   baseName: string;
@@ -70,6 +79,51 @@ export const isIPFSPath = (pathname: string): boolean => {
     }
   }
   return false;
+};
+
+/*
+ * 按"内容"而不是"后缀名"识别本地数据文件的真实格式。
+ *
+ * 结尾返回字符串（而非枚举），以便跨包使用而无需额外依赖：
+ *   - "sqlite"  : SQLite 数据库文件（SQLite format 3\0 头），无论后缀 .db/.sqlite/.db3/...
+ *   - "duckdb"  : DuckDB 数据库文件（头内包含 DUCK 魔数）
+ *   - "parquet" : Parquet 列式文件（PAR1 魔数头/尾）
+ *   - "text"    : 其余按分隔文本（CSV/TSV）对待，交给 DuckDB read_csv_auto 识别
+ */
+export const sniffLocalFileType = async (filePath: string): Promise<string> => {
+  const bufSize = 64;
+  const buf = Buffer.alloc(bufSize);
+  let nread = 0;
+
+  try {
+    const fd = await fsPromises.open(filePath, "r");
+    try {
+      const { bytesRead } = await fd.read(buf, 0, bufSize, 0);
+      nread = bytesRead;
+    } finally {
+      await fd.close();
+    }
+  } catch (err) {
+    // 无法读取（如 IPFS 路径）→ 视为文本
+    return "text";
+  }
+
+  const head = buf.slice(0, nread);
+  const headStr = head.toString("latin1");
+
+  // SQLite: 以 "SQLite format 3" 开头（后跟 NULL 字节）
+  if (headStr.startsWith("SQLite format 3")) {
+    return "sqlite";
+  }
+  // DuckDB: 数据库头在前 16 字节内包含 "DUCK" 魔数
+  if (headStr.slice(0, 16).includes("DUCK")) {
+    return "duckdb";
+  }
+  // Parquet: 以 PAR1 开头（结尾通常也是 PAR1）
+  if (headStr.startsWith("PAR1")) {
+    return "parquet";
+  }
+  return "text";
 };
 
 interface ImportInfo {
@@ -176,8 +230,8 @@ export class FSDriver implements DbDriver {
         ", importing..."
       );
       let tableName: string;
-      const extName = path.extname(targetPath);
-      if (extName === ".parquet") {
+      const fileType = await sniffLocalFileType(targetPath);
+      if (fileType === "parquet") {
         tableName = await reltabDuckDB.nativeParquetImport(
           this.dbc.db,
           targetPath
@@ -207,9 +261,9 @@ export class FSDriver implements DbDriver {
             targetPath,
             fileStats.mtime
           );
-          const extName = path.extname(targetPath);
           const tableName = importInfo.tableName;
-          if (extName === ".parquet") {
+          const fileType = await sniffLocalFileType(targetPath);
+          if (fileType === "parquet") {
             await reltabDuckDB.nativeParquetImport(
               this.dbc.db,
               targetPath,

@@ -18,7 +18,7 @@ import {
   LocalReltabConnection,
   resolvePath,
 } from "reltab";
-import { dataFileExtensions, isIPFSPath } from "reltab-fs";
+import { dataFileExtensions, isIPFSPath, sniffLocalFileType } from "reltab-fs";
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -162,24 +162,30 @@ export const createFromDSPath = async (
 };
 
 /**
- * Determines if the path refers to a database file based on its extension.
+ * Determines if the path refers to a database file by sniffing its content
+ * (not just its extension).
  * @param fspath
  * @returns providerName string suitable for use in a DataSourceId, or
- * `null` if not a database file.
+ * `null` if not a database file (i.e. a data/text/parquet file handled by localfs).
  */
-function isDbFile(fspath: string): DataSourceProviderName | null {
-  const ext = path.extname(fspath);
-  switch (ext) {
-    case ".sqlite":
-      return "sqlite";
-    case ".duckdb":
-      return "duckdb";
+async function isDbFile(fspath: string): Promise<DataSourceProviderName | null> {
+  if (isIPFSPath(fspath) || !fs.existsSync(fspath)) {
+    return null;
+  }
+  const fileType = await sniffLocalFileType(fspath);
+  if (fileType === "sqlite") {
+    return "sqlite";
+  }
+  if (fileType === "duckdb") {
+    return "duckdb";
   }
   return null;
 }
 
-export function fileOpenParams(targetPath: string): OpenParams {
-  const providerName = isDbFile(targetPath);
+export async function fileOpenParams(
+  targetPath: string
+): Promise<OpenParams> {
+  const providerName = await isDbFile(targetPath);
   let openParams: OpenParams;
   if (providerName !== null) {
     const sourceId: DataSourceId = {
@@ -204,7 +210,7 @@ export const createFromFile = async (
   if (!isIPFSPath(targetPath)) {
     realTargetPath = await fsPromises.realpath(targetPath);
   }
-  const openParams = fileOpenParams(realTargetPath);
+  const openParams = await fileOpenParams(realTargetPath);
   const win = await create(openParams);
   return win;
 };
@@ -221,7 +227,14 @@ export const openDialog = async (
     filters: [
       {
         name: "数据文件",
-        extensions: dataFileExtensions.concat(["tad", "sqlite", "duckdb"]),
+        extensions: dataFileExtensions.concat([
+          "tad",
+          "sqlite",
+          "duckdb",
+          "db",
+          "db3",
+          "sqlite3",
+        ]),
       },
       /*
       {
@@ -247,7 +260,7 @@ export const openDialog = async (
   const openPaths = openRet.filePaths;
   if (openPaths && openPaths.length > 0) {
     const filePath = openPaths[0];
-    const openParams = fileOpenParams(filePath);
+    const openParams = await fileOpenParams(filePath);
     if (win && isInitialized(win.id)) {
       win.webContents.send("open-file", {
         openParams,

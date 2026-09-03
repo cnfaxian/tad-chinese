@@ -54,6 +54,7 @@
     "reltab-bigquery": "^0.12.0",
     "reltab-duckdb": "^0.12.0",
     "reltab-fs": "^0.12.0",
+    "reltab-sqlite": "^0.14.0",
     "source-map-support": "^0.5.21",
     "tadviewer": "^0.12.0"
   },
@@ -141,6 +142,21 @@
       {
         "ext": "sqlite",
         "name": "SQLite 文件",
+        "role": "Viewer"
+      },
+      {
+        "ext": "db",
+        "name": "SQLite 数据库文件",
+        "role": "Viewer"
+      },
+      {
+        "ext": "db3",
+        "name": "SQLite 数据库文件",
+        "role": "Viewer"
+      },
+      {
+        "ext": "sqlite3",
+        "name": "SQLite 数据库文件",
         "role": "Viewer"
       },
       {

@@ -11,6 +11,8 @@ import * as reltabBigQuery from "reltab-bigquery";
 import "reltab-bigquery";
 import * as reltabDuckDB from "reltab-duckdb";
 import "reltab-duckdb";
+import * as reltabSqlite from "reltab-sqlite";
+import "reltab-sqlite";
 import * as reltabFS from "reltab-fs";
 import "reltab-fs";
 import * as setup from "./setup";
@@ -283,8 +285,8 @@ async function openSrcFiles(options: commandLineArgs.CommandLineOptions) {
     if (win == null) {
       win = await appWindow.createFromFile(targetPath);
     } else {
-      appWindow.runPostInit(win, () => {
-        const openParams = appWindow.fileOpenParams(targetPath);
+      appWindow.runPostInit(win, async () => {
+        const openParams = await appWindow.fileOpenParams(targetPath);
         win!.webContents.send("open-file", {
           openParams,
         });

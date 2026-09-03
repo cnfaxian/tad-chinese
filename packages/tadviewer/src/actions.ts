@@ -125,9 +125,36 @@ export const replaceCurrentView = async (
 
   const targetNode = await resolvePath(appState.rtc, dsPath);
   if (targetNode.isContainer) {
+    // 数据/数据库容器节点（如直接打开 SQLite / DuckDB 数据库文件）：
+    // 自动加载该容器下的第一张表，使主区域立即显示数据，
+    // 而不是只切换到数据源侧栏并留下空白主面板。
+    const dbc = await appState.rtc.connect(dsPath.sourceId);
+    const children = await dbc.getChildren(dsPath);
+    const firstLeaf = children && children.find((c) => !c.isContainer);
+    if (firstLeaf) {
+      // 使用与数据源侧栏树一致的路径（根为 "."，再追加表名），
+      // 保证标题、底部状态与侧栏选中态一致。
+      const leafPath = ["."].concat([firstLeaf.id]);
+      const leafDSPath: DataSourcePath = {
+        sourceId: dsPath.sourceId,
+        path: leafPath,
+      };
+      return loadTableFromDSPath(leafDSPath, stateRef, viewParams);
+    }
     await setActivity("DataSource", stateRef);
     return;
   }
+
+  return loadTableFromDSPath(dsPath, stateRef, viewParams);
+};
+
+// Load and display a leaf (table) data source in the main grid.
+const loadTableFromDSPath = async (
+  dsPath: DataSourcePath,
+  stateRef: StateRef<AppState>,
+  viewParams?: ViewParams
+): Promise<void> => {
+  const appState = mutableGet(stateRef);
 
   const dbc = await appState.rtc.connect(dsPath.sourceId);
 
@@ -138,7 +165,7 @@ export const replaceCurrentView = async (
 
   const queryTableName = await dbc.getTableName(dsPath);
 
-  // console.log("replaceCurrentView: queryTableName: ", dsPath, queryTableName);
+  // console.log("loadTableFromDSPath: queryTableName: ", dsPath, queryTableName);
 
   const baseQuery = reltab.tableQuery(queryTableName);
   const baseSchema = await aggtree.getBaseSchema(
