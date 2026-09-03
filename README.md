@@ -54,6 +54,8 @@ Tad 是一款用于查看和分析表格数据的桌面应用程序，支持 CSV
 | Linux | `tad-0.14.0.tar.gz` | 解压后运行可执行文件 |
 | macOS | 需在 Mac 上构建 | `npx electron-builder --mac zip` |
 
+> **测试说明**：Windows 版绿色软件（`Tad 0.14.0.exe`）已经过测试，可正常使用；Linux 版本**未经测试**。本测试更新于 **2026 年 9 月 3 号**。
+
 ## 从源码构建
 
 - 通用构建说明：[doc/building.md](doc/building.md)
