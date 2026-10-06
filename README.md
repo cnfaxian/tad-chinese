@@ -57,10 +57,7 @@ Tad 是一款用于查看和分析表格数据的桌面应用程序，支持 CSV
 > **测试说明**：Windows 版绿色软件（`Tad 0.14.0.exe`）已经过测试，可正常使用；本测试更新于 **2026 年 9 月 3 号**。
   Linux 绿色版已经经过测试，可以正常使用。更新于 2026 年 10 月 6 日。
 
-## 从源码构建
 
-- 通用构建说明：[doc/building.md](doc/building.md)
-- Linux 打包详细说明：[doc/linux-packaging.md](doc/linux-packaging.md)
 
 ## 项目来源
 
@@ -71,26 +68,7 @@ Tad 是一款用于查看和分析表格数据的桌面应用程序，支持 CSV
 - 新增时间戳时区选择器
 - 提供 Windows/Linux 便携版打包
 
-### 核心包说明
 
-| 包名 | 说明 |
-|------|------|
-| [reltab](./packages/reltab) | 关系式 SQL 查询构建与执行的核心抽象层 |
-| [reltab-duckdb](./packages/reltab-duckdb/) | DuckDb 数据库驱动 |
-| [reltab-sqlite](./packages/reltab-sqlite/) | SQLite 数据库驱动 |
-| [aggtree](./packages/aggtree/) | 基于 reltab 的透视树构建库 |
-| [tadviewer](./packages/tadviewer/) | Tad 透视表 UI 组件 |
-| [tad-app](./packages/tad-app/) | 基于 Electron 的桌面应用 |
-
-### 实验性包
-
-| 包名 | 说明 |
-|------|------|
-| [tadweb-app](./packages/tadweb-app/) | 基于 tadviewer 的 Web 应用示例 |
-| [tadweb-server](./packages/tadweb-server/) | Tad Web 应用参考服务器 |
-| [reltab-aws-athena](./packages/reltab-aws-athena/) | AWS Athena 数据库驱动 |
-| [reltab-bigquery](./packages/reltab-bigquery/) | Google BigQuery 数据库驱动 |
-| [reltab-snowflake](./packages/reltab-snowflake/) | Snowflake 数据库驱动 |
 
 ## 许可证
 
