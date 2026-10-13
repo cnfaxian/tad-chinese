@@ -9,6 +9,7 @@ import {
   mkSubSelectList,
   SQLFromQuery,
   SQLSelectAST,
+  QueryToSqlOptions,
 } from "../SQLQuery";
 import { pagedQueryToSql, unpagedQueryToSql } from "../toSql";
 import { LeafSchemaMap } from "../TableRep";
@@ -50,7 +51,8 @@ class PrestoDialectClass extends BaseSQLDialect {
     tableMap: LeafSchemaMap,
     query: QueryRep,
     offset?: number,
-    limit?: number
+    limit?: number,
+    options?: QueryToSqlOptions
   ): SQLQueryAST {
     let ret: SQLQueryAST;
     if (offset != null && limit != null) {

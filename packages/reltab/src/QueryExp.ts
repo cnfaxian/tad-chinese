@@ -40,6 +40,7 @@ import {
   SQLQueryAST,
   SQLSelectAST,
   SQLSelectListItem,
+  QueryToSqlOptions,
 } from "./SQLQuery";
 import { Row, LeafSchemaMap, TableRep } from "./TableRep";
 import { unpagedQueryToSql } from "./toSql";
@@ -169,9 +170,10 @@ export class QueryExp {
     dialect: SQLDialect,
     tableMap: LeafSchemaMap,
     offset?: number,
-    limit?: number
+    limit?: number,
+    options?: QueryToSqlOptions
   ): string {
-    const sql = dialect.queryToSql(tableMap, this._rep, offset, limit);
+    const sql = dialect.queryToSql(tableMap, this._rep, offset, limit, options);
     return ppSQLQuery(dialect, sql);
   }
 

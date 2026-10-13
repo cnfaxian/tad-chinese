@@ -1,6 +1,6 @@
 import { SQLDialect } from "./dialect";
 import { QueryRep } from "./QueryRep";
-import { SQLQueryAST } from "./SQLQuery";
+import { SQLQueryAST, QueryToSqlOptions } from "./SQLQuery";
 import { pagedQueryToSql } from "./toSql";
 import { ColumnType, CoreColumnTypes, ColumnTypeMap } from "./ColumnType";
 import { LeafSchemaMap } from "./TableRep";
@@ -26,7 +26,8 @@ export abstract class BaseSQLDialect implements SQLDialect {
     tableMap: LeafSchemaMap,
     query: QueryRep,
     offset?: number,
-    limit?: number
+    limit?: number,
+    options?: QueryToSqlOptions
   ): SQLQueryAST {
     return pagedQueryToSql(this, tableMap, query, offset, limit);
   }

@@ -6,6 +6,7 @@ import { SQLDialect } from "./dialect";
 import { QueryExp } from "./QueryExp";
 import { defaultEvalQueryOptions } from "./remote/Connection";
 import { Schema } from "./Schema";
+import { QueryToSqlOptions } from "./SQLQuery";
 
 import { Row, LeafSchemaMap, TableRep } from "./TableRep";
 import * as log from "loglevel";
@@ -48,7 +49,7 @@ export interface DataSourceNode {
   isContainer: boolean; // true iff this node can have children
 }
 
-export interface EvalQueryOptions {
+export interface EvalQueryOptions extends QueryToSqlOptions {
   showQueries?: boolean;
 }
 
@@ -125,11 +126,18 @@ export class DbDataSource implements DataSourceConnection {
   async getSqlForQuery(
     query: QueryExp,
     offset?: number,
-    limit?: number
+    limit?: number,
+    options?: EvalQueryOptions
   ): Promise<string> {
     await this.ensureLeafDeps(query);
     const schema = query.getSchema(this.db.dialect, this.tableMap);
-    const sqlQuery = query.toSql(this.db.dialect, this.tableMap, offset, limit);
+    const sqlQuery = query.toSql(
+      this.db.dialect,
+      this.tableMap,
+      offset,
+      limit,
+      options
+    );
     return sqlQuery;
   }
 
@@ -139,7 +147,7 @@ export class DbDataSource implements DataSourceConnection {
     limit?: number,
     options?: EvalQueryOptions
   ): Promise<TableRep> {
-    const sqlQuery = await this.getSqlForQuery(query, offset, limit);
+    const sqlQuery = await this.getSqlForQuery(query, offset, limit, options);
     const schema = query.getSchema(this.db.dialect, this.tableMap);
     const trueOptions = options ? options : defaultEvalQueryOptions;
 

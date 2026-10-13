@@ -6,7 +6,7 @@ import { ColumnType, CoreColumnTypes, ColumnTypeMap } from "./ColumnType";
 import * as log from "loglevel";
 import { LeafSchemaMap } from "./TableRep";
 import { QueryRep } from "./QueryRep";
-import { SQLQueryAST } from "./SQLQuery";
+import { SQLQueryAST, QueryToSqlOptions } from "./SQLQuery";
 
 export interface SQLDialect {
   readonly dialectName: string;
@@ -19,7 +19,8 @@ export interface SQLDialect {
     tableMap: LeafSchemaMap,
     query: QueryRep,
     offset?: number,
-    limit?: number
+    limit?: number,
+    options?: QueryToSqlOptions
   ): SQLQueryAST;
 
   readonly coreColumnTypes: CoreColumnTypes;

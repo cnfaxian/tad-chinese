@@ -41,6 +41,14 @@ const kindIsNumeric = (kind: ColumnKind): boolean => {
 
 export type StringRenderFn = (val: any) => string;
 
+/**
+ * Cross-realm safe Date detection. Values may originate from a native
+ * addon (e.g. node-duckdb) loaded in a different realm, where
+ * `val instanceof Date` returns false even though it is a Date.
+ */
+export const isDateLike = (val: any): val is Date =>
+  Object.prototype.toString.call(val) === "[object Date]";
+
 type ColumnTypeOpts = {
   defaultAggFn?: AggFn;
   stringRender?: StringRenderFn;

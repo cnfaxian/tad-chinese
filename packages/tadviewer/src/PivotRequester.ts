@@ -250,7 +250,9 @@ const requestDataView = async (
   ) => void
 ): Promise<PagedDataView> => {
   onViewQuery?.(queryView.query, offset, limit);
-  const tableData = await rt.evalQuery(queryView.query, offset, limit);
+  const tableData = await rt.evalQuery(queryView.query, offset, limit, {
+    preserveTimestampPrecision: true,
+  });
   const dataView = mkDataView(
     viewParams,
     queryView.rowCount,

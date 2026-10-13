@@ -60,35 +60,46 @@ export const convertTimestampToTimezone = (
   isoStr: string,
   offsetMinutes: number
 ): string => {
-  const date = new Date(isoStr);
-  if (isNaN(date.getTime())) return isoStr;
-
-  const utcYear = date.getUTCFullYear();
-  const utcMonth = date.getUTCMonth();
-  const utcDay = date.getUTCDate();
-  const utcHours = date.getUTCHours();
-  const utcMinutes = date.getUTCMinutes();
-  const utcSeconds = date.getUTCSeconds();
-
-  const totalMinutes = utcHours * 60 + utcMinutes + offsetMinutes;
-  const dayOffset = Math.floor(totalMinutes / (24 * 60));
-  const remainder = ((totalMinutes % (24 * 60)) + (24 * 60)) % (24 * 60);
-  const newHours = Math.floor(remainder / 60);
-  const newMinutes = remainder % 60;
-
-  const result = new Date(
-    Date.UTC(utcYear, utcMonth, utcDay + dayOffset, newHours, newMinutes, utcSeconds)
+  const m = isoStr.match(
+    /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?(\.\d+)?(?:(Z)|([+-])(\d{2})(?::?(\d{2}))?)?$/
   );
+  if (!m) {
+    return isoStr;
+  }
 
-  const y = result.getUTCFullYear();
-  const m = String(result.getUTCMonth() + 1).padStart(2, "0");
-  const dd = String(result.getUTCDate()).padStart(2, "0");
-  const hh = String(result.getUTCHours()).padStart(2, "0");
-  const mm = String(result.getUTCMinutes()).padStart(2, "0");
+  const year = Number.parseInt(m[1], 10);
+  const month = Number.parseInt(m[2], 10);
+  const day = Number.parseInt(m[3], 10);
+  const hour = Number.parseInt(m[4], 10);
+  const minute = Number.parseInt(m[5], 10);
+  const second = m[6] != null ? Number.parseInt(m[6], 10) : 0;
+  const frac = m[7] ?? "";
+
+  // 解析输入自带的偏移（Z 或 ±hh[:mm]）；无偏移时按 UTC 处理。
+  let sourceOffsetMinutes = 0;
+  if (m[9] != null) {
+    const sign = m[9] === "-" ? -1 : 1;
+    const offH = Number.parseInt(m[10], 10);
+    const offM = m[11] != null ? Number.parseInt(m[11], 10) : 0;
+    sourceOffsetMinutes = sign * (offH * 60 + offM);
+  }
+
+  // 先把 wall-clock 换算成绝对时刻，再叠加目标时区偏移得到目标 wall-clock。
+  const instantMs =
+    Date.UTC(year, month - 1, day, hour, minute, second) -
+    sourceOffsetMinutes * 60000;
+  const target = new Date(instantMs + offsetMinutes * 60000);
+
+  const y = target.getUTCFullYear();
+  const mo = String(target.getUTCMonth() + 1).padStart(2, "0");
+  const dd = String(target.getUTCDate()).padStart(2, "0");
+  const hh = String(target.getUTCHours()).padStart(2, "0");
+  const mm = String(target.getUTCMinutes()).padStart(2, "0");
+  const ss = String(target.getUTCSeconds()).padStart(2, "0");
 
   const sign = offsetMinutes >= 0 ? "+" : "-";
   const oh = String(Math.floor(Math.abs(offsetMinutes) / 60)).padStart(2, "0");
   const om = String(Math.abs(offsetMinutes) % 60).padStart(2, "0");
 
-  return `${y}-${m}-${dd}T${hh}:${mm}:00${sign}${oh}:${om}`;
+  return `${y}-${mo}-${dd}T${hh}:${mm}:${ss}${frac}${sign}${oh}:${om}`;
 };

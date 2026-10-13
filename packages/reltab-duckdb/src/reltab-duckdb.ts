@@ -57,6 +57,13 @@ class ConnectionPool {
     } else {
       const conn = await this.db.connect();
       await initS3(conn);
+      // 统一会话时区为 UTC，使 TIMESTAMPTZ 的 CAST(... AS VARCHAR) 输出
+      // 恒为 "...+00" 形式，便于前端按显示时区换算并保持排序稳定。
+      try {
+        await conn.exec(`SET TimeZone='UTC'`);
+      } catch (err) {
+        log.warn("failed to set session timezone to UTC: ", err);
+      }
       return conn;
     }
   }

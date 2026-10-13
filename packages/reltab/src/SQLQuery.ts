@@ -24,6 +24,13 @@ export type SQLSelectListItem = {
   colExp: SQLValExp;
   colType: ColumnType; // needed by some dialects, like BigQuery
   as?: string;
+  /**
+   * When true, the rendered select expression will be wrapped in a
+   * CAST(... AS VARCHAR) so the value is returned as text. Used to
+   * preserve full timestamp precision on dialects whose driver would
+   * otherwise truncate it.
+   */
+  renderAsString?: boolean;
 };
 
 export const mkColSelItem = (
@@ -65,6 +72,21 @@ export type SQLQueryAST = {
   offset?: number;
   limit?: number;
 };
+
+/**
+ * Optional knobs controlling SQL generation.
+ */
+export interface QueryToSqlOptions {
+  /**
+   * When true, dialects that truncate timestamp values (e.g. DuckDB, whose
+   * native binding converts timestamps to millisecond-precision JS Dates)
+   * should render timestamp columns in the outermost projection as
+   * full-precision text (CAST(... AS VARCHAR)) so no precision is lost.
+   * Used for display queries only; export queries omit it to preserve
+   * native temporal types.
+   */
+  preserveTimestampPrecision?: boolean;
+}
 
 /**
  * get Column Id from a SQLSelectListItem -- essential when hoisting column names from

@@ -90,6 +90,10 @@ const ppSelListItem = (
     throw new Error("ppSelListItem fail: " + item.toString());
   }
   ret = ppValExp(dialect, item.colExp, item.colType);
+  if (item.renderAsString) {
+    const stringTypeName = dialect.coreColumnTypes.string.sqlTypeName;
+    ret = `CAST(${ret} AS ${stringTypeName})`;
+  }
   if (item.as != null) {
     ret += ` as ${dialect.quoteCol(item.as)}`;
   }

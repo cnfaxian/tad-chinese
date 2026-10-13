@@ -1,6 +1,10 @@
-import { ColumnType, CoreColumnTypes, ColumnTypeMap } from "../ColumnType";
+import { ColumnType, CoreColumnTypes, ColumnTypeMap, isDateLike } from "../ColumnType";
 import { BaseSQLDialect } from "../BaseSQLDialect";
 import { isNode } from "../util/environ";
+import { getColId, QueryToSqlOptions, SQLQueryAST } from "../SQLQuery";
+import { pagedQueryToSql } from "../toSql";
+import { LeafSchemaMap } from "../TableRep";
+import { QueryRep } from "../QueryRep";
 
 const intCT = new ColumnType("INTEGER", "integer");
 const realCT = new ColumnType("DOUBLE", "real");
@@ -19,6 +23,28 @@ function isDuckDBStringRenderer(val: any): val is DuckDBStringRenderer {
   );
 }
 
+/**
+ * Strip a trailing UTC "Z" and normalize any trailing numeric offset to
+ * a canonical "±HH:MM" form, preserving fractional seconds verbatim.
+ */
+const normalizeTimezoneSuffix = (str: string): string => {
+  if (str.endsWith("Z")) {
+    return str.slice(0, -1) + "+00:00";
+  }
+  // 仅在确实包含时间成分时才解析尾部偏移，避免把纯日期
+  // （如 "2022-02-11"）末尾的 "-11" 误判为时区偏移。
+  if (!/[T :]/.test(str)) {
+    return str;
+  }
+  const m = str.match(/([+-]\d{2})(?::?(\d{2}))?$/);
+  if (m) {
+    const sign = m[1];
+    const mins = m[2] ?? "00";
+    return str.slice(0, str.length - m[0].length) + `${sign}:${mins}`;
+  }
+  return str;
+};
+
 const createTimestampStringRenderer = (
   dateOnly = false,
   withTimeZone = false
@@ -32,29 +58,22 @@ const createTimestampStringRenderer = (
     }
     // node-duckdb 直接返回 JS Date 时（本地调用/测试场景），
     // 统一转成 UTC ISO 字符串再走文本处理；渲染进程场景收到的
-    // 本就是 JSON 序列化后的 ISO 字符串。
-    const str = val instanceof Date ? val.toISOString() : String(val);
+    // 本就是 JSON 序列化后的 ISO 字符串或 DSSQL CAST 后的全精度文本。
+    const str = isDateLike(val) ? val.toISOString() : String(val);
     if (dateOnly) {
-      return str.split("T")[0];
+      return str.split(/[T ]/)[0];
     }
     if (withTimeZone) {
       // 带时区列：显示"时刻 + 明确偏移"。Z 表示 UTC（+00:00），
-      // 已带 ±hh:mm 偏移的保留原始偏移，不做任何时区转换。
-      if (str.endsWith("Z")) {
-        return str.slice(0, -1).replace(/\.\d+$/, "") + "+00:00";
-      }
-      if (str.match(/[+-]\d{2}:\d{2}$/)) {
-        return str.slice(0, -6).replace(/\.\d+$/, "") + str.slice(-6);
-      }
-      return str.replace(/\.\d+$/, "");
+      // 已带 ±hh[:mm] 偏移的规范化为 ±hh:mm，保留小数秒不做时区转换。
+      return normalizeTimezoneSuffix(str).replace("T", " ");
     }
-    // 无时区列：原样保留 wall-clock 值，仅做文本美化
-    // （去 Z 后缀、去毫秒、T 转空格），不附加任何时区偏移。
+    // 无时区列：原样保留 wall-clock 值与全部小数位（不截断精度），
+    // 仅做文本美化（去 Z 后缀、T 转空格）。
     let ret = str;
     if (ret.endsWith("Z")) {
       ret = ret.slice(0, -1);
     }
-    ret = ret.replace(/\.\d+$/, "");
     ret = ret.replace("T", " ");
     return ret;
   },
@@ -135,6 +154,32 @@ const blobCT = new ColumnType("BLOB", "blob", {
   },
 });
 
+/**
+ * Render every timestamp column in the outermost projection as a
+ * full-precision text value (CAST(... AS VARCHAR)). This bypasses the
+ * node-duckdb native binding, which converts timestamps to millisecond
+ * precision JS Dates and would otherwise silently truncate microseconds
+ * and nanoseconds. Only the outermost select list is rewritten; inner
+ * subqueries (used for filtering, grouping, joining, sorting) keep their
+ * native temporal types.
+ */
+const castOuterTimestampsToStrings = (q: SQLQueryAST): SQLQueryAST => ({
+  ...q,
+  selectStmts: q.selectStmts.map((sel) => ({
+    ...sel,
+    selectCols: sel.selectCols.map((item) => {
+      if (item.colType != null && item.colType.kind === "timestamp") {
+        return {
+          ...item,
+          as: item.as != null ? item.as : getColId(item),
+          renderAsString: true,
+        };
+      }
+      return item;
+    }),
+  })),
+});
+
 export class DuckDBDialectClass extends BaseSQLDialect {
   private static instance: DuckDBDialectClass;
   readonly dialectName: string = "duckdb";
@@ -183,6 +228,20 @@ export class DuckDBDialectClass extends BaseSQLDialect {
       DuckDBDialectClass.instance = new DuckDBDialectClass();
     }
     return DuckDBDialectClass.instance;
+  }
+
+  queryToSql(
+    tableMap: LeafSchemaMap,
+    query: QueryRep,
+    offset?: number,
+    limit?: number,
+    options?: QueryToSqlOptions
+  ): SQLQueryAST {
+    const ret = pagedQueryToSql(this, tableMap, query, offset, limit);
+    if (options?.preserveTimestampPrecision) {
+      return castOuterTimestampsToStrings(ret);
+    }
+    return ret;
   }
 }
 

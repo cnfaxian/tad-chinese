@@ -281,7 +281,7 @@ export class ViewParams
       }
       return (val?: any): string => {
         if (val == null) return "";
-        const str = val instanceof Date ? val.toISOString() : String(val);
+        const str = reltab.isDateLike(val) ? val.toISOString() : String(val);
         return convertTimestampToTimezone(str, offsetMin);
       };
     }

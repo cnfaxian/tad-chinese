@@ -379,53 +379,88 @@ test("DuckDb timestamp types", async () => {
 
   const d1 = "1991-07-21T11:30:00.000Z";
   const d2 = "2022-02-11T14:15:45.000Z";
+  const us1 = "1991-07-21 11:30:00.123456";
+  const ns1 = "1991-07-21 11:30:00.123456789";
+  const ms1 = "1991-07-21 11:30:00.123";
+  const s1 = "1991-07-21 11:30:00";
 
-  // NOTE:
-  // fully uniform results with duckdb-node blocked on https://github.com/duckdb/duckdb-node/issues/13.
-  // Once this issue is fixed, we can comment out the timestamp_ns, timestamp_ms, and timestamp_s
-  // columns and add the results to the snapshot.
   await driver.runSqlQuery(
     `
     create table timestamp_test as (
       select '${d1}' as t,
       cast('${d1}' as TIMESTAMP WITH TIME ZONE) as tz,
-      -- cast('${d1}' as timestamp_ns) as t_ns,
-      -- cast('${d1}' as timestamp_ms) as t_ms,
-      -- cast('${d1}' as timestamp_s) as t_s,
       cast('${d1}' as datetime) as dt,
-      cast('${d1}' as date) as d
+      cast('${d1}' as date) as d,
+      cast('${us1}' as TIMESTAMP) as t_us,
+      cast('${ns1}' as TIMESTAMP_NS) as t_ns,
+      cast('${ms1}' as TIMESTAMP_MS) as t_ms,
+      cast('${s1}' as TIMESTAMP_S) as t_s
       UNION ALL select
       '${d2}' as t,
       cast('${d2}' as TIMESTAMP WITH TIME ZONE) as tz,
-      -- cast('${d2}' as timestamp_ns) as t_ns,
-      -- cast('${d2}' as timestamp_ms) as t_ms,
-      -- cast('${d2}' as timestamp_s) as t_s,
       cast('${d2}' as datetime) as dt,
-      cast('${d2}' as date) as d
+      cast('${d2}' as date) as d,
+      cast('2022-02-11 14:15:45.000000' as TIMESTAMP) as t_us,
+      cast('2022-02-11 14:15:45.000000000' as TIMESTAMP_NS) as t_ns,
+      cast('2022-02-11 14:15:45.000' as TIMESTAMP_MS) as t_ms,
+      cast('2022-02-11 14:15:45' as TIMESTAMP_S) as t_s
       );`
   );
 
   const q0 = tableQuery("timestamp_test");
+
+  // 默认路径：node-duckdb 绑定把时间戳转成毫秒精度 JS Date。
   const q0res = await dbc.evalQuery(q0);
-
   const fmtRows = getFormattedRows(q0res);
-
   expect(fmtRows).toMatchInlineSnapshot(`
     [
       [
         "1991-07-21T11:30:00.000Z",
-        "Sun Jul 21 1991 20:30:00 GMT+0900 (中国夏令时间)",
-        "Sun Jul 21 1991 20:30:00 GM +0900 (中国夏令时间)",
-        "Sun Jul 21 1991 09:00:00 GM",
+        "1991-07-21 11:30:00.000+00:00",
+        "1991-07-21 11:30:00.000",
+        "1991-07-21",
+        "1991-07-21 11:30:00.123",
+        "1991-07-21 11:30:00.123",
+        "1991-07-21 11:30:00.123",
+        "1991-07-21 11:30:00.000",
       ],
       [
         "2022-02-11T14:15:45.000Z",
-        "Fri Feb 11 2022 22:15:45 GMT+0800 (中国标准时间)",
-        "Fri Feb 11 2022 22:15:45 GM +0800 (中国标准时间)",
-        "Fri Feb 11 2022 08:00:00 GM",
+        "2022-02-11 14:15:45.000+00:00",
+        "2022-02-11 14:15:45.000",
+        "2022-02-11",
+        "2022-02-11 14:15:45.000",
+        "2022-02-11 14:15:45.000",
+        "2022-02-11 14:15:45.000",
+        "2022-02-11 14:15:45.000",
       ],
     ]
   `);
+
+  // 全精度路径：CAST(... AS VARCHAR)，保留微秒/纳秒与真实秒位。
+  const q0full = await dbc.evalQuery(q0, undefined, undefined, {
+    preserveTimestampPrecision: true,
+  });
+  const fullRow0 = q0full.rowData[0];
+  expect(fullRow0.tz).toBe("1991-07-21 11:30:00+00");
+  expect(fullRow0.dt).toBe("1991-07-21 11:30:00");
+  expect(fullRow0.d).toBe("1991-07-21");
+  expect(fullRow0.t_us).toBe("1991-07-21 11:30:00.123456");
+  expect(fullRow0.t_ns).toBe("1991-07-21 11:30:00.123456789");
+  expect(fullRow0.t_ms).toBe("1991-07-21 11:30:00.123");
+  expect(fullRow0.t_s).toBe("1991-07-21 11:30:00");
+
+  const fullRow1 = q0full.rowData[1];
+  expect(fullRow1.t_us).toBe("2022-02-11 14:15:45");
+  expect(fullRow1.t_ns).toBe("2022-02-11 14:15:45");
+
+  // 排序：最外层 CAST 后仍应按时间先后排序（ISO 文本字典序=时间序）。
+  const sorted = q0.sort([["t_us", false]]);
+  const sortedRes = await dbc.evalQuery(sorted, undefined, undefined, {
+    preserveTimestampPrecision: true,
+  });
+  expect(sortedRes.rowData[0].t_us).toBe("2022-02-11 14:15:45");
+  expect(sortedRes.rowData[1].t_us).toBe("1991-07-21 11:30:00.123456");
 });
 
 /*

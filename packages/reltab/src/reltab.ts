@@ -13,6 +13,7 @@ export * from "./AggFn";
 export * from "./ColumnType";
 export * from "./DataSource";
 export * from "./toSql";
+export { QueryToSqlOptions } from "./SQLQuery";
 export { AggColSpec, ColumnMapInfo } from "./QueryRep";
 export * from "./remote/Transport";
 export * from "./remote/server";
